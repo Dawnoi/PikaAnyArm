@@ -99,9 +99,11 @@ class Arm_FK:
         )
         self.last_matrix = np.dot(self.first_matrix, self.second_matrix)
         q = quaternion_from_matrix(self.last_matrix)
+        # 使用 'joint7' 而不是 'link7'（link7 是 link 名称，joint7 才是关节名称）
+        joint7_id = self.reduced_robot.model.getJointId('joint7')
         self.reduced_robot.model.addFrame(
             pin.Frame('ee',
-                      self.reduced_robot.model.getJointId('link7'),
+                      joint7_id,
                       pin.SE3(
                           pin.Quaternion(q[3], q[0], q[1], q[2]),
                           np.array([self.last_matrix[0, 3], self.last_matrix[1, 3], self.last_matrix[2, 3]]),
@@ -111,18 +113,16 @@ class Arm_FK:
 
     def get_pose(self, q):
         """根据关节角度计算末端位姿"""
-        # Nero 有 7 个关节 (link1-7)，需要找到对应的 joint index
-        # 减去锁定的夹爪关节 (2个)
-        index = 7 + (1 if self.args.lift else 0)
+        joint7_id = self.reduced_robot.model.getJointId('joint7')
         pin.forwardKinematics(self.reduced_robot.model, self.reduced_robot.data, np.concatenate([q], axis=0))
         
         end_pose = create_transformation_matrix(
-            self.reduced_robot.data.oMi[index].translation[0],
-            self.reduced_robot.data.oMi[index].translation[1],
-            self.reduced_robot.data.oMi[index].translation[2],
-            math.atan2(self.reduced_robot.data.oMi[index].rotation[2, 1], self.reduced_robot.data.oMi[index].rotation[2, 2]),
-            math.asin(-self.reduced_robot.data.oMi[index].rotation[2, 0]),
-            math.atan2(self.reduced_robot.data.oMi[index].rotation[1, 0], self.reduced_robot.data.oMi[index].rotation[0, 0])
+            self.reduced_robot.data.oMi[joint7_id].translation[0],
+            self.reduced_robot.data.oMi[joint7_id].translation[1],
+            self.reduced_robot.data.oMi[joint7_id].translation[2],
+            math.atan2(self.reduced_robot.data.oMi[joint7_id].rotation[2, 1], self.reduced_robot.data.oMi[joint7_id].rotation[2, 2]),
+            math.asin(-self.reduced_robot.data.oMi[joint7_id].rotation[2, 0]),
+            math.atan2(self.reduced_robot.data.oMi[joint7_id].rotation[1, 0], self.reduced_robot.data.oMi[joint7_id].rotation[0, 0])
         )
         end_pose = np.dot(end_pose, self.last_matrix)
         return matrix_to_xyzrpy(end_pose)
@@ -159,9 +159,11 @@ class Arm_IK:
         )
         self.last_matrix = np.dot(self.first_matrix, self.second_matrix)
         q = quaternion_from_matrix(self.last_matrix)
+        # 使用 'joint7' 而不是 'link7'（link7 是 link 名称，joint7 才是关节名称）
+        joint7_id = self.reduced_robot.model.getJointId('joint7')
         self.reduced_robot.model.addFrame(
             pin.Frame('ee',
-                      self.reduced_robot.model.getJointId('link7'),
+                      joint7_id,
                       pin.SE3(
                           pin.Quaternion(q[3], q[0], q[1], q[2]),
                           np.array([self.last_matrix[0, 3], self.last_matrix[1, 3], self.last_matrix[2, 3]]),
@@ -323,26 +325,26 @@ class Arm_IK:
 
     def get_dist(self, q, xyz):
         """计算当前位置到目标位置的距离"""
-        index = 7 + (1 if self.args.lift else 0)
+        joint7_id = self.reduced_robot.model.getJointId('joint7')
         pin.forwardKinematics(self.reduced_robot.model, self.reduced_robot.data, np.concatenate([q], axis=0))
         dist = math.sqrt(
-            pow((xyz[0] - self.reduced_robot.data.oMi[index].translation[0]), 2) +
-            pow((xyz[1] - self.reduced_robot.data.oMi[index].translation[1]), 2) +
-            pow((xyz[2] - self.reduced_robot.data.oMi[index].translation[2]), 2)
+            pow((xyz[0] - self.reduced_robot.data.oMi[joint7_id].translation[0]), 2) +
+            pow((xyz[1] - self.reduced_robot.data.oMi[joint7_id].translation[1]), 2) +
+            pow((xyz[2] - self.reduced_robot.data.oMi[joint7_id].translation[2]), 2)
         )
         return dist
 
     def get_pose(self, q):
         """根据关节角度计算末端位姿"""
-        index = 7 + (1 if self.args.lift else 0)
+        joint7_id = self.reduced_robot.model.getJointId('joint7')
         pin.forwardKinematics(self.reduced_robot.model, self.reduced_robot.data, np.concatenate([q], axis=0))
         end_pose = create_transformation_matrix(
-            self.reduced_robot.data.oMi[index].translation[0],
-            self.reduced_robot.data.oMi[index].translation[1],
-            self.reduced_robot.data.oMi[index].translation[2],
-            math.atan2(self.reduced_robot.data.oMi[index].rotation[2, 1], self.reduced_robot.data.oMi[index].rotation[2, 2]),
-            math.asin(-self.reduced_robot.data.oMi[index].rotation[2, 0]),
-            math.atan2(self.reduced_robot.data.oMi[index].rotation[1, 0], self.reduced_robot.data.oMi[index].rotation[0, 0])
+            self.reduced_robot.data.oMi[joint7_id].translation[0],
+            self.reduced_robot.data.oMi[joint7_id].translation[1],
+            self.reduced_robot.data.oMi[joint7_id].translation[2],
+            math.atan2(self.reduced_robot.data.oMi[joint7_id].rotation[2, 1], self.reduced_robot.data.oMi[joint7_id].rotation[2, 2]),
+            math.asin(-self.reduced_robot.data.oMi[joint7_id].rotation[2, 0]),
+            math.atan2(self.reduced_robot.data.oMi[joint7_id].rotation[1, 0], self.reduced_robot.data.oMi[joint7_id].rotation[0, 0])
         )
         end_pose = np.dot(end_pose, self.last_matrix)
         return matrix_to_xyzrpy(end_pose)
