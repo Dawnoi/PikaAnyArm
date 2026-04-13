@@ -1,0 +1,15 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from nero_msgs/srv/Enable.srv
+// generated code does not contain a copyright notice
+
+
+module nero_msgs {
+  module srv {
+    struct Enable_Request {
+      boolean enable_request;
+    };
+    struct Enable_Response {
+      boolean enable_response;
+    };
+  };
+};

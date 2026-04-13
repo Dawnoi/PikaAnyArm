@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  中文说明：
+  - 本文件是 Nero “双臂”顶层装配模型（xacro）。
+  - 目标：在一个统一的全局坐标系下同时包含左臂与右臂，并在模型层面固定它们的相对安装位姿。
+  - 坐标系约定：
+    - `world`：根坐标系
+    - `body`：身体/肩膀中点坐标系（你要求的“左右两臂肩膀中间”为原点）。当前 `world_to_body` 为单位变换。
+  - 装配关系：
+    - 通过复用 `nero_arm_macro.xacro` 中的 `nero_arm` 宏分别实例化 `left_` 与 `right_` 两套机械臂。
+    - 左右肩在 `body` 坐标系下沿 y 轴对称放置，间距 0.5m：`y=+0.25` 与 `y=-0.25`。
+    - 右臂相对左臂“背对背”：在相同 roll/pitch 下，右臂 yaw = 左臂 yaw + 派（见下方两个 origin 块）。
+
+  如何在 RViz / robot_state_publisher 加载（ROS2 常见用法）：
+  - 思路：xacro 需要先展开成 URDF 字符串，再作为参数 robot_description 交给 robot_state_publisher。
+  - 方式一（命令行临时验证，推荐先跑通）：
+    - 先 source ROS2 环境与工作区，然后执行类似（xacro 使用 inorder 选项）：
+      - ros2 run xacro xacro -o /tmp/nero_dual.urdf &lt;path&gt;/nero_dual_arm_description.xacro
+      - ros2 run robot_state_publisher robot_state_publisher -p robot_description:="$(cat /tmp/nero_dual.urdf)"
+      - 再开 RViz，添加 RobotModel，并确保订阅 /robot_description
+  - 方式二（在 launch 里加载，工程化用法）：
+    - 在 launch 里用 xacro 生成 robot_description，再传给 robot_state_publisher 节点参数。
+    - 若已有 display/rviz 启动文件，可把 URDF 源替换成本 xacro。
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="nero_dual_arm">
+
+  <!-- 引入可复用的 Nero 单臂宏（同目录相对路径，不依赖 agx_arm_description 包） -->
+  <xacro:include filename="nero_arm_macro.xacro"/>
+
+  <!-- 全局装配坐标系：原点为两侧肩膀基座中点 -->
+  <link name="world"/>
+  <link name="body"/>
+  <joint name="world_to_body" type="fixed">
+    <parent link="world"/>
+    <child link="body"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!--
+    装配规格（你的需求）：
+    - 左臂基座 y=+0.20m，右臂基座 y=-0.20m（左右间距 0.4m）
+    - 两侧基座平面垂直地面；右臂相对左臂背对背（yaw 加 pi）
+
+    说明：
+    - 这里的 rpy 直接沿用原单臂 nero_description.urdf 中 world_to_base_link 的朝向
+    - 右臂在相同 roll/pitch 下，将 yaw 增加 pi
+  -->
+  <!-- roll 设为 0 避免两臂侧倾；若需与单臂导出一致可改回 0.05 -->
+  <!--
+    joint4 限制（关键）：
+    - 为避免 IK 多解域切换到“反关节（肘朝内）”分支，
+      left_joint4 只允许非负、right_joint4 符号与装配一致（保留小 eps 避免贴 0）。
+    - joint3 左右臂均为对称全范围 [-2.75, 2.75] rad。
+  -->
+  <xacro:nero_arm
+    prefix="left_"
+    parent_link="body"
+    joint1_lower="-2.70526"
+    joint1_upper="0.1745329252"
+    joint2_lower="-1.0471975512"
+    joint2_upper="1.74"
+    joint3_lower="-2.75"
+    joint3_upper="2.75"
+    joint4_lower="0.001"
+    joint4_upper="2.14"
+    joint5_lower="0.001"
+    joint5_upper="2.75"
+  >
+    <origin xyz="0 0.20 0" rpy="0 -1.5707926 -1.5707926"/>
+  </xacro:nero_arm>
+
+  <xacro:nero_arm
+    prefix="right_"
+    parent_link="body"
+    joint1_lower="-1.0471975512"
+    joint1_upper="2.70526"
+    joint2_lower="-1.0471975512"
+    joint2_upper="1.74"
+    joint3_lower="-2.75"
+    joint3_upper="2.75"
+    joint4_lower="0.001"
+    joint4_upper="2.14"
+    joint5_lower="-2.75"
+    joint5_upper="-0.001"
+  >
+    <origin xyz="0 -0.20 0" rpy="0 -1.5707926 1.5707926"/>
+  </xacro:nero_arm>
+
+</robot>

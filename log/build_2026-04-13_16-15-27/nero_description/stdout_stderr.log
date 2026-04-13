@@ -1,0 +1,85 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/dx/ws_/PikaAnyArm/build/nero_description
+-- Install configuration: ""
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//config
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//config/joint_names.yaml
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//launch
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//launch/display_xacro.launch.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/gripper_flange.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/link4.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/gripper_base.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/base_link.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/link2.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/link3.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/link6.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/gripper_link2.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/revo2_flange.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/link1.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/gripper_flange.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/gripper_base.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/link4.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/link7.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/gripper_link1.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/gripper_link2.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/link6.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/link5.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/link3.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/link1.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/revo2_flange.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/gripper_base_with_flange.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/base_link.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/dae/link2.dae
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/link5.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/gripper_base_with_flange.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/gripper_link1.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//meshes/link7.stl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_with_gripper_flange_description.xacro
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_dual_arm_with_gripper_description.xacro
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_gripper_macro.xacro
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/README.md
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_with_revo2_flange_description.xacro
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_with_gripper_description.xacro
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_with_right_revo2_description.xacro
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_with_left_revo2_description.xacro
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_dual_arm_generated.urdf
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_arm_macro.xacro
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_dual_arm_description.xacro
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_description.urdf
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_with_gripper_description.urdf
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_dual_arm_generated.urdf.bak
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//urdf/nero_dual_arm_with_gripper_generated.urdf
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//rviz
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description//rviz/rviz.config
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/ament_index/resource_index/package_run_dependencies/nero_description
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/ament_index/resource_index/parent_prefix_path/nero_description
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/environment/ament_prefix_path.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/environment/ament_prefix_path.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/environment/path.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/environment/path.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/local_setup.bash
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/local_setup.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/local_setup.zsh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/local_setup.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/package.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/ament_index/resource_index/packages/nero_description
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/cmake/nero_descriptionConfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/cmake/nero_descriptionConfig-version.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/package.xml

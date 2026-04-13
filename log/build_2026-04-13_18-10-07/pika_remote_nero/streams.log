@@ -1,0 +1,35 @@
+[0.008s] Invoking command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero': AMENT_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/opt/ros/humble /usr/bin/cmake --build /home/dx/ws_/PikaAnyArm/build/pika_remote_nero -- -j24 -l24
+[0.042s] Invoked command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero' returned '0': AMENT_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/opt/ros/humble /usr/bin/cmake --build /home/dx/ws_/PikaAnyArm/build/pika_remote_nero -- -j24 -l24
+[0.057s] Invoking command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero': AMENT_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/opt/ros/humble /usr/bin/cmake --install /home/dx/ws_/PikaAnyArm/build/pika_remote_nero
+[0.067s] -- Install configuration: "Release"
+[0.067s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//launch
+[0.068s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//launch/teleop_dual_nero.launch.py
+[0.068s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//launch/teleop_single_nero.launch.py
+[0.068s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts
+[0.068s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/arm_FIK.py
+[0.068s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/teleop_nero_publish.py
+[0.068s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/__init__.py
+[0.069s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/transformations.py
+[0.069s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/nero_FK.py
+[0.069s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/nero_IK.py
+[0.069s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/nero_FK.py
+[0.069s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/nero_IK.py
+[0.069s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/teleop_nero_publish.py
+[0.070s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/transformations.py
+[0.070s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/arm_FIK.py
+[0.070s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/ament_index/resource_index/package_run_dependencies/pika_remote_nero
+[0.071s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/ament_index/resource_index/parent_prefix_path/pika_remote_nero
+[0.071s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/ament_prefix_path.sh
+[0.071s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/ament_prefix_path.dsv
+[0.071s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/path.sh
+[0.071s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/path.dsv
+[0.072s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.bash
+[0.072s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.sh
+[0.072s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.zsh
+[0.072s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.dsv
+[0.072s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/package.dsv
+[0.072s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/ament_index/resource_index/packages/pika_remote_nero
+[0.072s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/cmake/pika_remote_neroConfig.cmake
+[0.072s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/cmake/pika_remote_neroConfig-version.cmake
+[0.072s] -- Up-to-date: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/package.xml
+[0.073s] Invoked command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero' returned '0': AMENT_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/opt/ros/humble /usr/bin/cmake --install /home/dx/ws_/PikaAnyArm/build/pika_remote_nero

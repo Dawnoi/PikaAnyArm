@@ -1,0 +1,393 @@
+[0.063s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'nero', 'nero_msgs']
+[0.063s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=24, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['nero', 'nero_msgs'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7027da9642b0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7027da927d00>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7027da927d00>>)
+[0.152s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.153s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.153s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/dx/ws_/PikaAnyArm'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.153s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.160s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extensions ['ignore', 'ignore_ament_install']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extension 'ignore'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extension 'ignore_ament_install'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extensions ['colcon_pkg']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extension 'colcon_pkg'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extensions ['colcon_meta']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extension 'colcon_meta'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extensions ['ros']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extension 'ros'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extensions ['cmake', 'python']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extension 'cmake'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extension 'python'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extensions ['python_setup_py']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(docs_img) by extension 'python_setup_py'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extensions ['ignore', 'ignore_ament_install']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extension 'ignore'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extension 'ignore_ament_install'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extensions ['colcon_pkg']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extension 'colcon_pkg'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extensions ['colcon_meta']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extension 'colcon_meta'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extensions ['ros']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extension 'ros'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extensions ['cmake', 'python']
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extension 'cmake'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extension 'python'
+[0.161s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extensions ['python_setup_py']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero) by extension 'python_setup_py'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extensions ['ignore', 'ignore_ament_install']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extension 'ignore'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extension 'ignore_ament_install'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extensions ['colcon_pkg']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extension 'colcon_pkg'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extensions ['colcon_meta']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extension 'colcon_meta'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extensions ['ros']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extension 'ros'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extensions ['cmake', 'python']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extension 'cmake'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extension 'python'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extensions ['python_setup_py']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros) by extension 'python_setup_py'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extensions ['ignore', 'ignore_ament_install']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extension 'ignore'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extension 'ignore_ament_install'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extensions ['colcon_pkg']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extension 'colcon_pkg'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extensions ['colcon_meta']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extension 'colcon_meta'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extensions ['ros']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extension 'ros'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extensions ['cmake', 'python']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extension 'cmake'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extension 'python'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extensions ['python_setup_py']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src) by extension 'python_setup_py'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero) by extensions ['ignore', 'ignore_ament_install']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero) by extension 'ignore'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero) by extension 'ignore_ament_install'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero) by extensions ['colcon_pkg']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero) by extension 'colcon_pkg'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero) by extensions ['colcon_meta']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero) by extension 'colcon_meta'
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero) by extensions ['ros']
+[0.162s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero) by extension 'ros'
+[0.164s] DEBUG:colcon.colcon_core.package_identification:Package 'nero/nero_ros/src/nero' with type 'ros.ament_python' and name 'nero'
+[0.164s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_description) by extensions ['ignore', 'ignore_ament_install']
+[0.164s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_description) by extension 'ignore'
+[0.164s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_description) by extension 'ignore_ament_install'
+[0.164s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_description) by extensions ['colcon_pkg']
+[0.164s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_description) by extension 'colcon_pkg'
+[0.164s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_description) by extensions ['colcon_meta']
+[0.164s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_description) by extension 'colcon_meta'
+[0.164s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_description) by extensions ['ros']
+[0.164s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_description) by extension 'ros'
+[0.165s] DEBUG:colcon.colcon_core.package_identification:Package 'nero/nero_ros/src/nero_description' with type 'ros.ament_cmake' and name 'nero_description'
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_msgs) by extension 'ignore'
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_msgs) by extension 'ignore_ament_install'
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_msgs) by extensions ['colcon_pkg']
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_msgs) by extension 'colcon_pkg'
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_msgs) by extensions ['colcon_meta']
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_msgs) by extension 'colcon_meta'
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_msgs) by extensions ['ros']
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/nero_ros/src/nero_msgs) by extension 'ros'
+[0.165s] DEBUG:colcon.colcon_core.package_identification:Package 'nero/nero_ros/src/nero_msgs' with type 'ros.ament_cmake' and name 'nero_msgs'
+[0.165s] Level 1:colcon.colcon_core.package_identification:_identify(nero/pika_remote_nero) by extensions ['ignore', 'ignore_ament_install']
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero/pika_remote_nero) by extension 'ignore'
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero/pika_remote_nero) by extension 'ignore_ament_install'
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero/pika_remote_nero) by extensions ['colcon_pkg']
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero/pika_remote_nero) by extension 'colcon_pkg'
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero/pika_remote_nero) by extensions ['colcon_meta']
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero/pika_remote_nero) by extension 'colcon_meta'
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero/pika_remote_nero) by extensions ['ros']
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero/pika_remote_nero) by extension 'ros'
+[0.166s] DEBUG:colcon.colcon_core.package_identification:Package 'nero/pika_remote_nero' with type 'ros.ament_cmake' and name 'pika_remote_nero'
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extensions ['ignore', 'ignore_ament_install']
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extension 'ignore'
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extension 'ignore_ament_install'
+[0.166s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extensions ['colcon_pkg']
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extension 'colcon_pkg'
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extensions ['colcon_meta']
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extension 'colcon_meta'
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extensions ['ros']
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extension 'ros'
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extensions ['cmake', 'python']
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extension 'cmake'
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extension 'python'
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extensions ['python_setup_py']
+[0.167s] Level 1:colcon.colcon_core.package_identification:_identify(nero_sdk) by extension 'python_setup_py'
+[0.309s] DEBUG:colcon.colcon_core.package_identification:Package 'nero_sdk' with type 'python' and name 'nero_sdk'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extensions ['ignore', 'ignore_ament_install']
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extension 'ignore'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extension 'ignore_ament_install'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extensions ['colcon_pkg']
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extension 'colcon_pkg'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extensions ['colcon_meta']
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extension 'colcon_meta'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extensions ['ros']
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extension 'ros'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extensions ['cmake', 'python']
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extension 'cmake'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extension 'python'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extensions ['python_setup_py']
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper) by extension 'python_setup_py'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper/pika_remote_piper) by extensions ['ignore', 'ignore_ament_install']
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper/pika_remote_piper) by extension 'ignore'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper/pika_remote_piper) by extension 'ignore_ament_install'
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper/pika_remote_piper) by extensions ['colcon_pkg']
+[0.309s] Level 1:colcon.colcon_core.package_identification:_identify(piper/pika_remote_piper) by extension 'colcon_pkg'
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/pika_remote_piper) by extensions ['colcon_meta']
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/pika_remote_piper) by extension 'colcon_meta'
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/pika_remote_piper) by extensions ['ros']
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/pika_remote_piper) by extension 'ros'
+[0.310s] DEBUG:colcon.colcon_core.package_identification:Package 'piper/pika_remote_piper' with type 'ros.ament_cmake' and name 'pika_remote_piper'
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extensions ['ignore', 'ignore_ament_install']
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extension 'ignore'
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extension 'ignore_ament_install'
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extensions ['colcon_pkg']
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extension 'colcon_pkg'
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extensions ['colcon_meta']
+[0.310s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extension 'colcon_meta'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extensions ['ros']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extension 'ros'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extensions ['cmake', 'python']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extension 'cmake'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extension 'python'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extensions ['python_setup_py']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros) by extension 'python_setup_py'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extensions ['ignore', 'ignore_ament_install']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extension 'ignore'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extension 'ignore_ament_install'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extensions ['colcon_pkg']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extension 'colcon_pkg'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extensions ['colcon_meta']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extension 'colcon_meta'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extensions ['ros']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extension 'ros'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extensions ['cmake', 'python']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extension 'cmake'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extension 'python'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extensions ['python_setup_py']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts) by extension 'python_setup_py'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extensions ['ignore', 'ignore_ament_install']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extension 'ignore'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extension 'ignore_ament_install'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extensions ['colcon_pkg']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extension 'colcon_pkg'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extensions ['colcon_meta']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extension 'colcon_meta'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extensions ['ros']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extension 'ros'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extensions ['cmake', 'python']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extension 'cmake'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extension 'python'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extensions ['python_setup_py']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/asserts/pictures) by extension 'python_setup_py'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extensions ['ignore', 'ignore_ament_install']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extension 'ignore'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extension 'ignore_ament_install'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extensions ['colcon_pkg']
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extension 'colcon_pkg'
+[0.311s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extensions ['colcon_meta']
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extension 'colcon_meta'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extensions ['ros']
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extension 'ros'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extensions ['cmake', 'python']
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extension 'cmake'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extension 'python'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extensions ['python_setup_py']
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src) by extension 'python_setup_py'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper) by extensions ['ignore', 'ignore_ament_install']
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper) by extension 'ignore'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper) by extension 'ignore_ament_install'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper) by extensions ['colcon_pkg']
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper) by extension 'colcon_pkg'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper) by extensions ['colcon_meta']
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper) by extension 'colcon_meta'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper) by extensions ['ros']
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper) by extension 'ros'
+[0.312s] DEBUG:colcon.colcon_core.package_identification:Package 'piper/piper_ros/src/piper' with type 'ros.ament_python' and name 'piper'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_description) by extensions ['ignore', 'ignore_ament_install']
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_description) by extension 'ignore'
+[0.312s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_description) by extension 'ignore_ament_install'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_description) by extensions ['colcon_pkg']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_description) by extension 'colcon_pkg'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_description) by extensions ['colcon_meta']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_description) by extension 'colcon_meta'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_description) by extensions ['ros']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_description) by extension 'ros'
+[0.313s] DEBUG:colcon.colcon_core.package_identification:Package 'piper/piper_ros/src/piper_description' with type 'ros.ament_cmake' and name 'piper_description'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_msgs) by extension 'ignore'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_msgs) by extension 'ignore_ament_install'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_msgs) by extensions ['colcon_pkg']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_msgs) by extension 'colcon_pkg'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_msgs) by extensions ['colcon_meta']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_msgs) by extension 'colcon_meta'
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_msgs) by extensions ['ros']
+[0.313s] Level 1:colcon.colcon_core.package_identification:_identify(piper/piper_ros/src/piper_msgs) by extension 'ros'
+[0.314s] DEBUG:colcon.colcon_core.package_identification:Package 'piper/piper_ros/src/piper_msgs' with type 'ros.ament_cmake' and name 'piper_msgs'
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.314s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.334s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'nero_description' in 'nero/nero_ros/src/nero_description'
+[0.334s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'nero_sdk' in 'nero_sdk'
+[0.334s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'pika_remote_piper' in 'piper/pika_remote_piper'
+[0.334s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'piper' in 'piper/piper_ros/src/piper'
+[0.334s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'piper_description' in 'piper/piper_ros/src/piper_description'
+[0.334s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'piper_msgs' in 'piper/piper_ros/src/piper_msgs'
+[0.335s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'pika_remote_nero' in 'nero/pika_remote_nero'
+[0.335s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.335s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.336s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 276 installed packages in /opt/ros/humble
+[0.337s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.358s] Level 5:colcon.colcon_core.verb:set package 'nero' build argument 'cmake_args' from command line to 'None'
+[0.358s] Level 5:colcon.colcon_core.verb:set package 'nero' build argument 'cmake_target' from command line to 'None'
+[0.358s] Level 5:colcon.colcon_core.verb:set package 'nero' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.358s] Level 5:colcon.colcon_core.verb:set package 'nero' build argument 'cmake_clean_cache' from command line to 'False'
+[0.358s] Level 5:colcon.colcon_core.verb:set package 'nero' build argument 'cmake_clean_first' from command line to 'False'
+[0.358s] Level 5:colcon.colcon_core.verb:set package 'nero' build argument 'cmake_force_configure' from command line to 'False'
+[0.358s] Level 5:colcon.colcon_core.verb:set package 'nero' build argument 'ament_cmake_args' from command line to 'None'
+[0.358s] Level 5:colcon.colcon_core.verb:set package 'nero' build argument 'catkin_cmake_args' from command line to 'None'
+[0.358s] Level 5:colcon.colcon_core.verb:set package 'nero' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.358s] DEBUG:colcon.colcon_core.verb:Building package 'nero' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/dx/ws_/PikaAnyArm/build/nero', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/dx/ws_/PikaAnyArm/install/nero', 'merge_install': False, 'path': '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero', 'symlink_install': False, 'test_result_base': None}
+[0.359s] Level 5:colcon.colcon_core.verb:set package 'nero_msgs' build argument 'cmake_args' from command line to 'None'
+[0.359s] Level 5:colcon.colcon_core.verb:set package 'nero_msgs' build argument 'cmake_target' from command line to 'None'
+[0.359s] Level 5:colcon.colcon_core.verb:set package 'nero_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.359s] Level 5:colcon.colcon_core.verb:set package 'nero_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.359s] Level 5:colcon.colcon_core.verb:set package 'nero_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.359s] Level 5:colcon.colcon_core.verb:set package 'nero_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.359s] Level 5:colcon.colcon_core.verb:set package 'nero_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.359s] Level 5:colcon.colcon_core.verb:set package 'nero_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.359s] Level 5:colcon.colcon_core.verb:set package 'nero_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.359s] DEBUG:colcon.colcon_core.verb:Building package 'nero_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/dx/ws_/PikaAnyArm/build/nero_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/dx/ws_/PikaAnyArm/install/nero_msgs', 'merge_install': False, 'path': '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero_msgs', 'symlink_install': False, 'test_result_base': None}
+[0.359s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.360s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.360s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero' with build type 'ament_python'
+[0.360s] Level 1:colcon.colcon_core.shell:create_environment_hook('nero', 'ament_prefix_path')
+[0.361s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.362s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/hook/ament_prefix_path.ps1'
+[0.362s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/hook/ament_prefix_path.dsv'
+[0.362s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/hook/ament_prefix_path.sh'
+[0.363s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.363s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.364s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero_msgs' with build type 'ament_cmake'
+[0.365s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero_msgs'
+[0.365s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.365s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.511s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero'
+[0.511s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.511s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.516s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/dx/ws_/PikaAnyArm/build/nero_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/dx/ws_/PikaAnyArm/build/nero_msgs -- -j24 -l24
+[0.747s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/dx/ws_/PikaAnyArm/build/nero_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/dx/ws_/PikaAnyArm/build/nero_msgs -- -j24 -l24
+[0.755s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/dx/ws_/PikaAnyArm/build/nero_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/dx/ws_/PikaAnyArm/build/nero_msgs
+[0.757s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero': PYTHONPATH=/home/dx/ws_/PikaAnyArm/build/nero/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/nero build --build-base /home/dx/ws_/PikaAnyArm/build/nero/build install --record /home/dx/ws_/PikaAnyArm/build/nero/install.log --single-version-externally-managed install_data
+[0.793s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(nero_msgs)
+[0.795s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/dx/ws_/PikaAnyArm/build/nero_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/dx/ws_/PikaAnyArm/build/nero_msgs
+[0.795s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs' for CMake module files
+[0.796s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs' for CMake config files
+[0.796s] Level 1:colcon.colcon_core.shell:create_environment_hook('nero_msgs', 'cmake_prefix_path')
+[0.796s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/cmake_prefix_path.ps1'
+[0.796s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/cmake_prefix_path.dsv'
+[0.797s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/cmake_prefix_path.sh'
+[0.797s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib'
+[0.797s] Level 1:colcon.colcon_core.shell:create_environment_hook('nero_msgs', 'ld_library_path_lib')
+[0.797s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/ld_library_path_lib.ps1'
+[0.797s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/ld_library_path_lib.dsv'
+[0.798s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/ld_library_path_lib.sh'
+[0.798s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/bin'
+[0.798s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/pkgconfig/nero_msgs.pc'
+[0.798s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/python3.10/site-packages'
+[0.798s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/bin'
+[0.798s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.ps1'
+[0.799s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.dsv'
+[0.799s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.sh'
+[0.800s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.bash'
+[0.800s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.zsh'
+[0.800s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/colcon-core/packages/nero_msgs)
+[0.801s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(nero_msgs)
+[0.801s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs' for CMake module files
+[0.801s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs' for CMake config files
+[0.801s] Level 1:colcon.colcon_core.shell:create_environment_hook('nero_msgs', 'cmake_prefix_path')
+[0.802s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/cmake_prefix_path.ps1'
+[0.802s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/cmake_prefix_path.dsv'
+[0.802s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/cmake_prefix_path.sh'
+[0.802s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib'
+[0.802s] Level 1:colcon.colcon_core.shell:create_environment_hook('nero_msgs', 'ld_library_path_lib')
+[0.802s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/ld_library_path_lib.ps1'
+[0.803s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/ld_library_path_lib.dsv'
+[0.803s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/hook/ld_library_path_lib.sh'
+[0.803s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/bin'
+[0.803s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/pkgconfig/nero_msgs.pc'
+[0.803s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/python3.10/site-packages'
+[0.803s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero_msgs/bin'
+[0.803s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.ps1'
+[0.804s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.dsv'
+[0.804s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.sh'
+[0.804s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.bash'
+[0.804s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.zsh'
+[0.805s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/dx/ws_/PikaAnyArm/install/nero_msgs/share/colcon-core/packages/nero_msgs)
+[0.925s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero' for CMake module files
+[0.925s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero' returned '0': PYTHONPATH=/home/dx/ws_/PikaAnyArm/build/nero/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/nero build --build-base /home/dx/ws_/PikaAnyArm/build/nero/build install --record /home/dx/ws_/PikaAnyArm/build/nero/install.log --single-version-externally-managed install_data
+[0.925s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero' for CMake config files
+[0.926s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero/lib'
+[0.926s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero/bin'
+[0.926s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero/lib/pkgconfig/nero.pc'
+[0.926s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages'
+[0.926s] Level 1:colcon.colcon_core.shell:create_environment_hook('nero', 'pythonpath')
+[0.926s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/hook/pythonpath.ps1'
+[0.926s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/hook/pythonpath.dsv'
+[0.926s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/hook/pythonpath.sh'
+[0.927s] Level 1:colcon.colcon_core.environment:checking '/home/dx/ws_/PikaAnyArm/install/nero/bin'
+[0.927s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(nero)
+[0.927s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/package.ps1'
+[0.927s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/package.dsv'
+[0.928s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/package.sh'
+[0.928s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/package.bash'
+[0.928s] INFO:colcon.colcon_core.shell:Creating package script '/home/dx/ws_/PikaAnyArm/install/nero/share/nero/package.zsh'
+[0.928s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/dx/ws_/PikaAnyArm/install/nero/share/colcon-core/packages/nero)
+[0.928s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[0.928s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[0.928s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[0.928s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[0.932s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[0.932s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[0.932s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[0.932s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.FileNotFound: Failed to connect to socket /run/user/1000/bus: No such file or directory
+[0.932s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[0.932s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/dx/ws_/PikaAnyArm/install/local_setup.ps1'
+[0.932s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/dx/ws_/PikaAnyArm/install/_local_setup_util_ps1.py'
+[0.933s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/dx/ws_/PikaAnyArm/install/setup.ps1'
+[0.934s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/dx/ws_/PikaAnyArm/install/local_setup.sh'
+[0.934s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/dx/ws_/PikaAnyArm/install/_local_setup_util_sh.py'
+[0.934s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/dx/ws_/PikaAnyArm/install/setup.sh'
+[0.935s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/dx/ws_/PikaAnyArm/install/local_setup.bash'
+[0.935s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/dx/ws_/PikaAnyArm/install/setup.bash'
+[0.936s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/dx/ws_/PikaAnyArm/install/local_setup.zsh'
+[0.936s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/dx/ws_/PikaAnyArm/install/setup.zsh'

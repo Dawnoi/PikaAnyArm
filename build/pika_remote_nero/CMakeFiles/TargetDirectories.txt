@@ -1,0 +1,9 @@
+/home/dx/ws_/PikaAnyArm/build/pika_remote_nero/CMakeFiles/uninstall.dir
+/home/dx/ws_/PikaAnyArm/build/pika_remote_nero/CMakeFiles/pika_remote_nero_uninstall.dir
+/home/dx/ws_/PikaAnyArm/build/pika_remote_nero/CMakeFiles/test.dir
+/home/dx/ws_/PikaAnyArm/build/pika_remote_nero/CMakeFiles/edit_cache.dir
+/home/dx/ws_/PikaAnyArm/build/pika_remote_nero/CMakeFiles/rebuild_cache.dir
+/home/dx/ws_/PikaAnyArm/build/pika_remote_nero/CMakeFiles/list_install_components.dir
+/home/dx/ws_/PikaAnyArm/build/pika_remote_nero/CMakeFiles/install.dir
+/home/dx/ws_/PikaAnyArm/build/pika_remote_nero/CMakeFiles/install/local.dir
+/home/dx/ws_/PikaAnyArm/build/pika_remote_nero/CMakeFiles/install/strip.dir

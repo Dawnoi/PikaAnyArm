@@ -1,0 +1,65 @@
+[0.007s] Invoking command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero': CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/home/dx/ws_/PikaAnyArm/install/piper_description:/home/dx/ws_/PikaAnyArm/install/pika_remote_nero:/home/dx/ws_/PikaAnyArm/install/nero_msgs:/home/dx/ws_/PikaAnyArm/install/piper:/opt/ros/humble /usr/bin/cmake /home/dx/ws_/PikaAnyArm/nero/pika_remote_nero -DCMAKE_INSTALL_PREFIX=/home/dx/ws_/PikaAnyArm/install/pika_remote_nero
+[0.055s] -- The C compiler identification is GNU 11.4.0
+[0.102s] -- The CXX compiler identification is GNU 11.4.0
+[0.109s] -- Detecting C compiler ABI info
+[0.168s] -- Detecting C compiler ABI info - done
+[0.174s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.174s] -- Detecting C compile features
+[0.174s] -- Detecting C compile features - done
+[0.176s] -- Detecting CXX compiler ABI info
+[0.241s] -- Detecting CXX compiler ABI info - done
+[0.248s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.248s] -- Detecting CXX compile features
+[0.248s] -- Detecting CXX compile features - done
+[0.250s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.370s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.431s] -- Found rclpy: 3.3.21 (/opt/ros/humble/share/rclpy/cmake)
+[0.431s] -- Found std_msgs: 4.9.1 (/opt/ros/humble/share/std_msgs/cmake)
+[0.453s] -- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.456s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.461s] -- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.468s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.479s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.496s] -- Found std_srvs: 4.9.1 (/opt/ros/humble/share/std_srvs/cmake)
+[0.503s] -- Found sensor_msgs: 4.9.1 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.525s] -- Found nav_msgs: 4.9.1 (/opt/ros/humble/share/nav_msgs/cmake)
+[0.537s] -- Found nero_description: 1.0.0 (/home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/cmake)
+[0.588s] -- Configuring done
+[0.591s] -- Generating done
+[0.592s] -- Build files have been written to: /home/dx/ws_/PikaAnyArm/build/pika_remote_nero
+[0.599s] Invoked command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero' returned '0': CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/home/dx/ws_/PikaAnyArm/install/piper_description:/home/dx/ws_/PikaAnyArm/install/pika_remote_nero:/home/dx/ws_/PikaAnyArm/install/nero_msgs:/home/dx/ws_/PikaAnyArm/install/piper:/opt/ros/humble /usr/bin/cmake /home/dx/ws_/PikaAnyArm/nero/pika_remote_nero -DCMAKE_INSTALL_PREFIX=/home/dx/ws_/PikaAnyArm/install/pika_remote_nero
+[0.599s] Invoking command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero': CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/home/dx/ws_/PikaAnyArm/install/piper_description:/home/dx/ws_/PikaAnyArm/install/pika_remote_nero:/home/dx/ws_/PikaAnyArm/install/nero_msgs:/home/dx/ws_/PikaAnyArm/install/piper:/opt/ros/humble /usr/bin/cmake --build /home/dx/ws_/PikaAnyArm/build/pika_remote_nero -- -j24 -l24
+[0.632s] Invoked command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero' returned '0': CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/home/dx/ws_/PikaAnyArm/install/piper_description:/home/dx/ws_/PikaAnyArm/install/pika_remote_nero:/home/dx/ws_/PikaAnyArm/install/nero_msgs:/home/dx/ws_/PikaAnyArm/install/piper:/opt/ros/humble /usr/bin/cmake --build /home/dx/ws_/PikaAnyArm/build/pika_remote_nero -- -j24 -l24
+[0.634s] Invoking command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero': CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/home/dx/ws_/PikaAnyArm/install/piper_description:/home/dx/ws_/PikaAnyArm/install/pika_remote_nero:/home/dx/ws_/PikaAnyArm/install/nero_msgs:/home/dx/ws_/PikaAnyArm/install/piper:/opt/ros/humble /usr/bin/cmake --install /home/dx/ws_/PikaAnyArm/build/pika_remote_nero
+[0.640s] -- Install configuration: "Release"
+[0.641s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//launch
+[0.641s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//launch/teleop_dual_nero.launch.py
+[0.641s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//launch/teleop_single_nero.launch.py
+[0.641s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts
+[0.641s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/arm_FIK.py
+[0.641s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/teleop_nero_publish.py
+[0.641s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/__init__.py
+[0.642s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/transformations.py
+[0.642s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/nero_FK.py
+[0.642s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/nero_IK.py
+[0.642s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/nero_FK.py
+[0.642s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/nero_IK.py
+[0.643s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/teleop_nero_publish.py
+[0.643s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/transformations.py
+[0.643s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/arm_FIK.py
+[0.643s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/ament_index/resource_index/package_run_dependencies/pika_remote_nero
+[0.643s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/ament_index/resource_index/parent_prefix_path/pika_remote_nero
+[0.644s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/ament_prefix_path.sh
+[0.644s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/ament_prefix_path.dsv
+[0.644s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/path.sh
+[0.644s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/path.dsv
+[0.644s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.bash
+[0.645s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.sh
+[0.645s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.zsh
+[0.645s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.dsv
+[0.645s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/package.dsv
+[0.645s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/ament_index/resource_index/packages/pika_remote_nero
+[0.645s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/cmake/pika_remote_neroConfig.cmake
+[0.645s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/cmake/pika_remote_neroConfig-version.cmake
+[0.646s] -- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/package.xml
+[0.646s] Invoked command in '/home/dx/ws_/PikaAnyArm/build/pika_remote_nero' returned '0': CMAKE_PREFIX_PATH=/home/dx/ws_/PikaAnyArm/install/nero_description:/home/dx/ws_/PikaAnyArm/install/piper_description:/home/dx/ws_/PikaAnyArm/install/pika_remote_nero:/home/dx/ws_/PikaAnyArm/install/nero_msgs:/home/dx/ws_/PikaAnyArm/install/piper:/opt/ros/humble /usr/bin/cmake --install /home/dx/ws_/PikaAnyArm/build/pika_remote_nero

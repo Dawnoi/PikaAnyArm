@@ -1,0 +1,3 @@
+/home/dx/ws_/PikaAnyArm/build/nero_msgs/rosidl_adapter/nero_msgs:msg/NeroStatusMsg.idl
+/home/dx/ws_/PikaAnyArm/build/nero_msgs/rosidl_adapter/nero_msgs:msg/PosCmd.idl
+/home/dx/ws_/PikaAnyArm/build/nero_msgs/rosidl_adapter/nero_msgs:srv/Enable.idl

@@ -1,0 +1,45 @@
+[0.396s] Invoking command in '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero': PYTHONPATH=/home/dx/ws_/PikaAnyArm/build/nero/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/nero build --build-base /home/dx/ws_/PikaAnyArm/build/nero/build install --record /home/dx/ws_/PikaAnyArm/build/nero/install.log --single-version-externally-managed install_data
+[0.531s] running egg_info
+[0.532s] creating ../../../../build/nero/nero.egg-info
+[0.532s] writing ../../../../build/nero/nero.egg-info/PKG-INFO
+[0.532s] writing dependency_links to ../../../../build/nero/nero.egg-info/dependency_links.txt
+[0.532s] writing entry points to ../../../../build/nero/nero.egg-info/entry_points.txt
+[0.532s] writing requirements to ../../../../build/nero/nero.egg-info/requires.txt
+[0.532s] writing top-level names to ../../../../build/nero/nero.egg-info/top_level.txt
+[0.532s] writing manifest file '../../../../build/nero/nero.egg-info/SOURCES.txt'
+[0.533s] reading manifest file '../../../../build/nero/nero.egg-info/SOURCES.txt'
+[0.533s] adding license file 'LICENSE'
+[0.533s] writing manifest file '../../../../build/nero/nero.egg-info/SOURCES.txt'
+[0.533s] running build
+[0.533s] running build_py
+[0.533s] creating /home/dx/ws_/PikaAnyArm/build/nero/build
+[0.533s] creating /home/dx/ws_/PikaAnyArm/build/nero/build/lib
+[0.533s] creating /home/dx/ws_/PikaAnyArm/build/nero/build/lib/nero
+[0.533s] copying nero/__init__.py -> /home/dx/ws_/PikaAnyArm/build/nero/build/lib/nero
+[0.534s] copying nero/nero_ctrl_single_node.py -> /home/dx/ws_/PikaAnyArm/build/nero/build/lib/nero
+[0.534s] running install
+[0.534s] running install_lib
+[0.534s] creating /home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages/nero
+[0.534s] copying /home/dx/ws_/PikaAnyArm/build/nero/build/lib/nero/__init__.py -> /home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages/nero
+[0.534s] copying /home/dx/ws_/PikaAnyArm/build/nero/build/lib/nero/nero_ctrl_single_node.py -> /home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages/nero
+[0.534s] byte-compiling /home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages/nero/__init__.py to __init__.cpython-310.pyc
+[0.534s] byte-compiling /home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages/nero/nero_ctrl_single_node.py to nero_ctrl_single_node.cpython-310.pyc
+[0.536s] running install_data
+[0.536s] creating /home/dx/ws_/PikaAnyArm/install/nero/share/ament_index
+[0.536s] creating /home/dx/ws_/PikaAnyArm/install/nero/share/ament_index/resource_index
+[0.536s] creating /home/dx/ws_/PikaAnyArm/install/nero/share/ament_index/resource_index/packages
+[0.536s] copying resource/nero -> /home/dx/ws_/PikaAnyArm/install/nero/share/ament_index/resource_index/packages
+[0.536s] copying package.xml -> /home/dx/ws_/PikaAnyArm/install/nero/share/nero
+[0.536s] creating /home/dx/ws_/PikaAnyArm/install/nero/share/nero/launch
+[0.536s] copying launch/start_single_piper_rviz.launch.py -> /home/dx/ws_/PikaAnyArm/install/nero/share/nero/launch
+[0.536s] copying launch/start_single_piper.launch.py -> /home/dx/ws_/PikaAnyArm/install/nero/share/nero/launch
+[0.536s] copying launch/start_double_piper.launch.py -> /home/dx/ws_/PikaAnyArm/install/nero/share/nero/launch
+[0.536s] copying launch/start_single_nero.launch.py -> /home/dx/ws_/PikaAnyArm/install/nero/share/nero/launch
+[0.536s] running install_egg_info
+[0.537s] Copying ../../../../build/nero/nero.egg-info to /home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages/nero-0.0.0-py3.10.egg-info
+[0.538s] running install_scripts
+[0.551s] Installing nero_ms_ctrl script to /home/dx/ws_/PikaAnyArm/install/nero/lib/nero
+[0.551s] Installing nero_read_master script to /home/dx/ws_/PikaAnyArm/install/nero/lib/nero
+[0.551s] Installing nero_single_ctrl script to /home/dx/ws_/PikaAnyArm/install/nero/lib/nero
+[0.551s] writing list of installed files to '/home/dx/ws_/PikaAnyArm/build/nero/install.log'
+[0.564s] Invoked command in '/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero' returned '0': PYTHONPATH=/home/dx/ws_/PikaAnyArm/build/nero/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/dx/ws_/PikaAnyArm/install/nero/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/nero build --build-base /home/dx/ws_/PikaAnyArm/build/nero/build install --record /home/dx/ws_/PikaAnyArm/build/nero/install.log --single-version-externally-managed install_data

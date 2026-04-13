@@ -1,0 +1,9 @@
+/home/dx/ws_/PikaAnyArm/build/nero_description/CMakeFiles/uninstall.dir
+/home/dx/ws_/PikaAnyArm/build/nero_description/CMakeFiles/nero_description_uninstall.dir
+/home/dx/ws_/PikaAnyArm/build/nero_description/CMakeFiles/test.dir
+/home/dx/ws_/PikaAnyArm/build/nero_description/CMakeFiles/edit_cache.dir
+/home/dx/ws_/PikaAnyArm/build/nero_description/CMakeFiles/rebuild_cache.dir
+/home/dx/ws_/PikaAnyArm/build/nero_description/CMakeFiles/list_install_components.dir
+/home/dx/ws_/PikaAnyArm/build/nero_description/CMakeFiles/install.dir
+/home/dx/ws_/PikaAnyArm/build/nero_description/CMakeFiles/install/local.dir
+/home/dx/ws_/PikaAnyArm/build/nero_description/CMakeFiles/install/strip.dir

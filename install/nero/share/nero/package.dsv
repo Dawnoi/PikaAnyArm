@@ -1,0 +1,6 @@
+source;share/nero/hook/pythonpath.ps1
+source;share/nero/hook/pythonpath.dsv
+source;share/nero/hook/pythonpath.sh
+source;share/nero/hook/ament_prefix_path.ps1
+source;share/nero/hook/ament_prefix_path.dsv
+source;share/nero/hook/ament_prefix_path.sh
