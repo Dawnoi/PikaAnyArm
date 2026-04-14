@@ -6,12 +6,10 @@ Nero Arm Forward/Inverse Kinematics
 """
 
 import casadi
-import meshcat.geometry as mg
 import math
 import numpy as np
 import pinocchio as pin
 from pinocchio import casadi as cpin
-from pinocchio.visualize import MeshcatVisualizer
 from transformations import quaternion_from_euler, euler_from_quaternion, quaternion_from_matrix
 import os
 import sys
@@ -159,7 +157,6 @@ class Arm_IK:
         )
         self.last_matrix = np.dot(self.first_matrix, self.second_matrix)
         q = quaternion_from_matrix(self.last_matrix)
-        # 使用 'joint7' 而不是 'link7'（link7 是 link 名称，joint7 才是关节名称）
         joint7_id = self.reduced_robot.model.getJointId('joint7')
         self.reduced_robot.model.addFrame(
             pin.Frame('ee',
@@ -181,41 +178,6 @@ class Arm_IK:
         # 初始化数据
         self.init_data = np.zeros(self.reduced_robot.model.nq)
         self.history_data = np.zeros(self.reduced_robot.model.nq)
-
-        # 初始化 MeshCat 可视化器
-        self.vis = MeshcatVisualizer(self.reduced_robot.model, self.reduced_robot.collision_model, self.reduced_robot.visual_model)
-        self.vis.initViewer(open=True)
-        self.vis.loadViewerModel("pinocchio")
-        self.vis.displayFrames(True, frame_ids=[self.reduced_robot.model.getFrameId('ee')], axis_length=0.15, axis_width=5)
-        self.vis.display(pin.neutral(self.reduced_robot.model))
-
-        # 目标末端执行器帧可视化
-        frame_viz_names = ['ee_target']
-        FRAME_AXIS_POSITIONS = (
-            np.array([[0, 0, 0], [1, 0, 0],
-                      [0, 0, 0], [0, 1, 0],
-                      [0, 0, 0], [0, 0, 1]]).astype(np.float32).T
-        )
-        FRAME_AXIS_COLORS = (
-            np.array([[1, 0, 0], [1, 0.6, 0],
-                      [0, 1, 0], [0.6, 1, 0],
-                      [0, 0, 1], [0, 0.6, 1]]).astype(np.float32).T
-        )
-        axis_length = 0.1
-        axis_width = 10
-        for frame_viz_name in frame_viz_names:
-            self.vis.viewer[frame_viz_name].set_object(
-                mg.LineSegments(
-                    mg.PointsGeometry(
-                        position=axis_length * FRAME_AXIS_POSITIONS,
-                        color=FRAME_AXIS_COLORS,
-                    ),
-                    mg.LineBasicMaterial(
-                        linewidth=axis_width,
-                        vertexColors=True,
-                    ),
-                )
-            )
 
         # 创建 CasADi 模型进行符号计算
         self.cmodel = cpin.Model(self.reduced_robot.model)
@@ -280,9 +242,6 @@ class Arm_IK:
             self.init_data = motorstate
         self.opti.set_initial(self.var_q, self.init_data)
 
-        # 可视化目标位姿
-        self.vis.viewer['ee_target'].set_transform(target_pose)
-
         self.opti.set_value(self.param_tf, target_pose)
 
         try:
@@ -298,7 +257,6 @@ class Arm_IK:
                 self.init_data = sol_q
 
             self.history_data = sol_q
-            self.vis.display(sol_q)
 
             if motorV is not None:
                 v = motorV * 0.0

@@ -93,70 +93,103 @@ class RosOperator(Node):
         self.init_ros()
 
     def localization_pose_callback(self, msg):
-        # 提取当前位置（base_link 系）
-        x = msg.pose.position.x
-        y = msg.pose.position.y
-        z = msg.pose.position.z
-        roll, pitch, yaw = euler_from_quaternion((
-            msg.pose.orientation.x, msg.pose.orientation.y,
-            msg.pose.orientation.z, msg.pose.orientation.w
-        ))
-        
-        # 标定初始位姿
-        if self.refresh_localization_pose:
-            self.refresh_localization_pose = False
-            self.pika_pose_initial = [x, y, z, roll, pitch, yaw]
-            self.get_logger().info("标定 pika 初始位姿完成")
-        
-        # 需要臂初始位姿和遥操作状态才能计算
-        if self.arm_pose_initial is not None and self.status:
-            # 计算欧拉角差值（相对运动）
-            # 根据测试结果修正轴方向：
-            # X（前后）、Y（左右）、绕X、绕Y 需要取反
-            dx = -(x - self.pika_pose_initial[0])   # X轴：向前推臂向右 -> 取反
-            dy = -(y - self.pika_pose_initial[1])   # Y轴：向右推臂向后 -> 取反
-            dz = z - self.pika_pose_initial[2]      # Z轴：正常
-            droll = -(roll - self.pika_pose_initial[3])  # 绕X：反的 -> 取反
-            dpitch = -(pitch - self.pika_pose_initial[4])  # 绕Y：反的 -> 取反
-            dyaw = yaw - self.pika_pose_initial[5]  # 绕Z：正常
+            # 提取当前位置（base_link 系）
+            x = msg.pose.position.x
+            y = msg.pose.position.y
+            z = msg.pose.position.z
+            roll, pitch, yaw = euler_from_quaternion((
+                msg.pose.orientation.x, msg.pose.orientation.y,
+                msg.pose.orientation.z, msg.pose.orientation.w
+            ))
             
-            # 直接加到初始臂位姿上
-            pose_xyzrpy = [
-                self.arm_pose_initial[0] + dx*0.5,
-                self.arm_pose_initial[1] + dy*0.5,
-                self.arm_pose_initial[2] + dz*0.5,
-                self.arm_pose_initial[3] + droll*0.5,
-                self.arm_pose_initial[4] + dpitch*0.5,
-                self.arm_pose_initial[5] + dyaw*0.5
-            ]
+            # 标定初始位姿
+            if self.refresh_localization_pose:
+                self.refresh_localization_pose = False
+                self.pika_pose_initial = [x, y, z, roll, pitch, yaw]
+                self.get_logger().info(f"标定 pika {self.args.index_name} 初始位姿完成")
             
-            pose_msg = PoseStamped()
-            pose_msg.header = Header()
-            pose_msg.header.frame_id = "map"
-            pose_msg.header.stamp = self.get_clock().now().to_msg()
-            pose_msg.pose.position.x = pose_xyzrpy[0]
-            pose_msg.pose.position.y = pose_xyzrpy[1]
-            pose_msg.pose.position.z = pose_xyzrpy[2]
-            q = quaternion_from_euler(pose_xyzrpy[3], pose_xyzrpy[4], pose_xyzrpy[5])
-            pose_msg.pose.orientation.x = q[0]
-            pose_msg.pose.orientation.y = q[1]
-            pose_msg.pose.orientation.z = q[2]
-            pose_msg.pose.orientation.w = q[3]
-            self.arm_end_pose_ctrl_publisher.publish(pose_msg)
-            status_msg = TeleopStatus()
-            status_msg.quit = False
-            status_msg.fail = False
-            self.teleop_status_publisher.publish(status_msg)
-
+            # 需要臂初始位姿和遥操作状态才能计算
+            if self.arm_pose_initial is not None and self.status:
+                # 1. 计算主设备端最原始的相对位移 (Raw Delta)
+                raw_dx = x - self.pika_pose_initial[0]
+                raw_dy = y - self.pika_pose_initial[1]
+                raw_dz = z - self.pika_pose_initial[2]
+                raw_droll = roll - self.pika_pose_initial[3]
+                raw_dpitch = pitch - self.pika_pose_initial[4]
+                raw_dyaw = yaw - self.pika_pose_initial[5]
+                
+                # 2. 根据左右臂区分坐标系映射 (Coordinate Mapping)
+                if self.args.index_name == '_r':
+                    # 【右臂逻辑】: 交换了 x 和 y 的映射。
+                    # 注意：你需要根据真机实际测试，调整这里的正负号
+                    mapped_dx = -raw_dy  # 如果往右飘，改成 raw_dy
+                    mapped_dy = raw_dx   # 如果往前飘，改成 -raw_dx
+                    mapped_dz = raw_dz
+                    mapped_droll = -raw_droll
+                    mapped_dpitch = -raw_dpitch
+                    mapped_dyaw = raw_dyaw
+                    
+                elif self.args.index_name == '_l':
+                    # 【左臂逻辑】: X坐标镜像，Y/Pitch保持不变
+                    mapped_dx = raw_dy
+                    mapped_dy = -raw_dx
+                    mapped_dz = raw_dz
+                    mapped_droll = -raw_droll
+                    mapped_dpitch = -raw_dpitch
+                    mapped_dyaw = raw_dyaw
+                    
+                else:
+                    # 默认后备逻辑
+                    mapped_dx = -raw_dx
+                    mapped_dy = -raw_dy
+                    mapped_dz = raw_dz
+                    mapped_droll = -raw_droll
+                    mapped_dpitch = -raw_dpitch
+                    mapped_dyaw = raw_dyaw
+                
+                # 3. 直接加到初始臂位姿上
+                pose_xyzrpy = [
+                    self.arm_pose_initial[0] + mapped_dx,
+                    self.arm_pose_initial[1] + mapped_dy,
+                    self.arm_pose_initial[2] + mapped_dz,
+                    self.arm_pose_initial[3] + mapped_droll,
+                    self.arm_pose_initial[4] + mapped_dpitch,
+                    self.arm_pose_initial[5] + mapped_dyaw
+                ]
+                if self.args.index_name == '_l':
+                    self.get_logger().info(
+                        f"主设备旋转增量(度): Roll={math.degrees(raw_droll):.1f}, "
+                        f"Pitch={math.degrees(raw_dpitch):.1f}, Yaw={math.degrees(raw_dyaw):.1f}"
+                    )
+                # 组装并发布 PoseStamped
+                pose_msg = PoseStamped()
+                pose_msg.header = Header()
+                pose_msg.header.frame_id = "map"
+                pose_msg.header.stamp = self.get_clock().now().to_msg()
+                pose_msg.pose.position.x = pose_xyzrpy[0]
+                pose_msg.pose.position.y = pose_xyzrpy[1]
+                pose_msg.pose.position.z = pose_xyzrpy[2]
+                q = quaternion_from_euler(pose_xyzrpy[3], pose_xyzrpy[4], pose_xyzrpy[5])
+                pose_msg.pose.orientation.x = q[0]
+                pose_msg.pose.orientation.y = q[1]
+                pose_msg.pose.orientation.z = q[2]
+                pose_msg.pose.orientation.w = q[3]
+                self.arm_end_pose_ctrl_publisher.publish(pose_msg)
+                
+                status_msg = TeleopStatus()
+                status_msg.quit = False
+                status_msg.fail = False
+                self.teleop_status_publisher.publish(status_msg)
     def arm_end_pose_callback(self, msg):
-        # 存储初始位姿为欧拉角格式
+        # 存储初始位姿为欧拉角格式（使用 ZYX 顺序，与 localization_pose_callback 一致）
         x = msg.pose.position.x
         y = msg.pose.position.y
         z = msg.pose.position.z
         roll, pitch, yaw = euler_from_quaternion((
             msg.pose.orientation.x, msg.pose.orientation.y,
             msg.pose.orientation.z, msg.pose.orientation.w
-        ))
+        ), 'szyx')[::-1]  # 返回 [yaw, pitch, roll]，反转得 [roll, pitch, yaw]
+
         if self.refresh_arm_end_pose:
             self.refresh_arm_end_pose = False
             self.arm_pose_initial = [x, y, z, roll, pitch, yaw]

@@ -5,12 +5,10 @@ Nero Inverse Kinematics Node
 """
 
 import casadi
-import meshcat.geometry as mg
 import math
 import numpy as np
 import pinocchio as pin
 from pinocchio import casadi as cpin
-from pinocchio.visualize import MeshcatVisualizer
 import os
 import sys
 import cv2
