@@ -77,8 +77,8 @@ class RosOperator(Node):
         self.localization_pose_subscriber = None
         self.arm_end_pose_subscriber = None
         self.arm_end_pose_ctrl_publisher = None
-        self.localization_pose_matrix = None
-        self.arm_end_pose_matrix = None
+        self.pika_pose_initial = None   # [x, y, z, roll, pitch, yaw] - pika 初始位姿
+        self.arm_pose_initial = None    # [x, y, z, roll, pitch, yaw] - 臂末端初始位姿
         self.refresh_localization_pose = True
         self.refresh_arm_end_pose = True
         self.thread = None
@@ -93,13 +93,43 @@ class RosOperator(Node):
         self.init_ros()
 
     def localization_pose_callback(self, msg):
-        roll, pitch, yaw = euler_from_quaternion((msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w))
-        matrix = create_transformation_matrix(msg.pose.position.x, msg.pose.position.y, msg.pose.position.z, roll, pitch, yaw)
+        # 提取当前位置（base_link 系）
+        x = msg.pose.position.x
+        y = msg.pose.position.y
+        z = msg.pose.position.z
+        roll, pitch, yaw = euler_from_quaternion((
+            msg.pose.orientation.x, msg.pose.orientation.y,
+            msg.pose.orientation.z, msg.pose.orientation.w
+        ))
+        
+        # 标定初始位姿
         if self.refresh_localization_pose:
             self.refresh_localization_pose = False
-            self.localization_pose_matrix = matrix
-        if self.arm_end_pose_matrix is not None and self.status:
-            pose_xyzrpy = matrix_to_xyzrpy(np.dot(self.arm_end_pose_matrix, np.dot(np.linalg.inv(self.localization_pose_matrix), matrix)))
+            self.pika_pose_initial = [x, y, z, roll, pitch, yaw]
+            self.get_logger().info("标定 pika 初始位姿完成")
+        
+        # 需要臂初始位姿和遥操作状态才能计算
+        if self.arm_pose_initial is not None and self.status:
+            # 计算欧拉角差值（相对运动）
+            # 根据测试结果修正轴方向：
+            # X（前后）、Y（左右）、绕X、绕Y 需要取反
+            dx = -(x - self.pika_pose_initial[0])   # X轴：向前推臂向右 -> 取反
+            dy = -(y - self.pika_pose_initial[1])   # Y轴：向右推臂向后 -> 取反
+            dz = z - self.pika_pose_initial[2]      # Z轴：正常
+            droll = -(roll - self.pika_pose_initial[3])  # 绕X：反的 -> 取反
+            dpitch = -(pitch - self.pika_pose_initial[4])  # 绕Y：反的 -> 取反
+            dyaw = yaw - self.pika_pose_initial[5]  # 绕Z：正常
+            
+            # 直接加到初始臂位姿上
+            pose_xyzrpy = [
+                self.arm_pose_initial[0] + dx*0.5,
+                self.arm_pose_initial[1] + dy*0.5,
+                self.arm_pose_initial[2] + dz*0.5,
+                self.arm_pose_initial[3] + droll*0.5,
+                self.arm_pose_initial[4] + dpitch*0.5,
+                self.arm_pose_initial[5] + dyaw*0.5
+            ]
+            
             pose_msg = PoseStamped()
             pose_msg.header = Header()
             pose_msg.header.frame_id = "map"
@@ -108,10 +138,10 @@ class RosOperator(Node):
             pose_msg.pose.position.y = pose_xyzrpy[1]
             pose_msg.pose.position.z = pose_xyzrpy[2]
             q = quaternion_from_euler(pose_xyzrpy[3], pose_xyzrpy[4], pose_xyzrpy[5])
-            pose_msg.pose.orientation.x = pose_xyzrpy[3]
-            pose_msg.pose.orientation.y = pose_xyzrpy[4]
-            pose_msg.pose.orientation.z = pose_xyzrpy[5]
-            pose_msg.pose.orientation.w = 0.0
+            pose_msg.pose.orientation.x = q[0]
+            pose_msg.pose.orientation.y = q[1]
+            pose_msg.pose.orientation.z = q[2]
+            pose_msg.pose.orientation.w = q[3]
             self.arm_end_pose_ctrl_publisher.publish(pose_msg)
             status_msg = TeleopStatus()
             status_msg.quit = False
@@ -119,11 +149,17 @@ class RosOperator(Node):
             self.teleop_status_publisher.publish(status_msg)
 
     def arm_end_pose_callback(self, msg):
-        roll, pitch, yaw = euler_from_quaternion((msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z, msg.pose.orientation.w))
-        matrix = create_transformation_matrix(msg.pose.position.x, msg.pose.position.y, msg.pose.position.z, roll, pitch, yaw)
+        # 存储初始位姿为欧拉角格式
+        x = msg.pose.position.x
+        y = msg.pose.position.y
+        z = msg.pose.position.z
+        roll, pitch, yaw = euler_from_quaternion((
+            msg.pose.orientation.x, msg.pose.orientation.y,
+            msg.pose.orientation.z, msg.pose.orientation.w
+        ))
         if self.refresh_arm_end_pose:
             self.refresh_arm_end_pose = False
-            self.arm_end_pose_matrix = matrix
+            self.arm_pose_initial = [x, y, z, roll, pitch, yaw]
 
     def status_changing(self):
         self.refresh_localization_pose = True
@@ -240,7 +276,7 @@ class RosOperator(Node):
     def init_pose(self):
         if self.args.return_zero_position == "True":
             # 目标关节位置
-            target_joint_state = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+            target_joint_state = [-0.000925,1.665288,1.5,0.001798,0.000122,0.000000,0.000140]
             
             # 获取当前关节位置
             # 如果已经接收到关节位置数据，使用实际的当前位置
@@ -250,7 +286,7 @@ class RosOperator(Node):
                 
                 # 设置过渡时间和控制频率
                 duration = 0.5  # 过渡持续时间(秒)
-                rate = 50  # 控制频率(Hz)
+                rate = 30  # 控制频率(Hz)
                 
                 # 计算总步数
                 steps = int(duration * rate)
@@ -273,7 +309,7 @@ class RosOperator(Node):
                     joint_states_msgs = JointState()
                     joint_states_msgs.header = Header()
                     joint_states_msgs.header.stamp = self.get_clock().now()
-                    joint_states_msgs.name = [f'joint{i+1}' for i in range(7)]
+                    joint_states_msgs.name = [f'joint{i+1}{self.args.index_name}' for i in range(7)]
                     joint_states_msgs.position = interpolated_positions
                     
                     # 发布消息
@@ -286,7 +322,7 @@ class RosOperator(Node):
                 joint_states_msgs = JointState()
                 joint_states_msgs.header = Header()
                 joint_states_msgs.header.stamp = self.get_clock().now()
-                joint_states_msgs.name = [f'joint{i+1}' for i in range(7)]
+                joint_states_msgs.name = [f'joint{i+1}{self.args.index_name}' for i in range(7)]
                 joint_states_msgs.position = target_joint_state
                 self.arm_joint_state_publisher.publish(joint_states_msgs)
                 
@@ -299,7 +335,7 @@ class RosOperator(Node):
                     joint_states_msgs = JointState()
                     joint_states_msgs.header = Header()
                     joint_states_msgs.header.stamp = self.get_clock().now()
-                    joint_states_msgs.name = [f'joint{i+1}' for i in range(7)]
+                    joint_states_msgs.name = [f'joint{i+1}{self.args.index_name}' for i in range(7)]
                     joint_states_msgs.position = target_joint_state
                     self.arm_joint_state_publisher.publish(joint_states_msgs)
         else:

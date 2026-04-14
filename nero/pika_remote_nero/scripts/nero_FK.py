@@ -116,24 +116,27 @@ class RosOperator(Node):
             end_pose_msg.pose.position.x = xyzrpy[0]
             end_pose_msg.pose.position.y = xyzrpy[1]
             end_pose_msg.pose.position.z = xyzrpy[2]
-            end_pose_msg.pose.orientation.x = xyzrpy[3]
-            end_pose_msg.pose.orientation.y = xyzrpy[4]
-            end_pose_msg.pose.orientation.z = xyzrpy[5]
-            # 夹爪状态（如果有）
-            gripper_value = 0.0
-            if len(self.arm_msg.position) > 7:
-                gripper_value = self.arm_msg.position[7]
-            end_pose_msg.pose.orientation.w = gripper_value
+            # FK 输出的是欧拉角，需要转换为四元数
+            qx, qy, qz, qw = quaternion_from_euler(xyzrpy[3], xyzrpy[4], xyzrpy[5])
+            end_pose_msg.pose.orientation.x = qx
+            end_pose_msg.pose.orientation.y = qy
+            end_pose_msg.pose.orientation.z = qz
+            end_pose_msg.pose.orientation.w = qw
             self.arm_end_pose_publisher.publish(end_pose_msg)
-            
-            x, y, z, w = quaternion_from_euler(end_pose_msg.pose.orientation.x, 
-                                                end_pose_msg.pose.orientation.y, 
-                                                end_pose_msg.pose.orientation.z)
-            end_pose_msg.pose.orientation.x = x
-            end_pose_msg.pose.orientation.y = y
-            end_pose_msg.pose.orientation.z = z
-            end_pose_msg.pose.orientation.w = w
-            self.arm_end_pose_orient_publisher.publish(end_pose_msg)
+
+            # urdf_end_pose_orient: 与 urdf_end_pose 保持一致的四元数（w 也使用四元数 w）
+            end_pose_orient_msg = PoseStamped()
+            end_pose_orient_msg.header = Header()
+            end_pose_orient_msg.header.stamp = self.get_clock().now().to_msg()
+            end_pose_orient_msg.header.frame_id = "map"
+            end_pose_orient_msg.pose.position.x = xyzrpy[0]
+            end_pose_orient_msg.pose.position.y = xyzrpy[1]
+            end_pose_orient_msg.pose.position.z = xyzrpy[2]
+            end_pose_orient_msg.pose.orientation.x = qx
+            end_pose_orient_msg.pose.orientation.y = qy
+            end_pose_orient_msg.pose.orientation.z = qz
+            end_pose_orient_msg.pose.orientation.w = qw
+            self.arm_end_pose_orient_publisher.publish(end_pose_orient_msg)
             rate.sleep()
 
     def init_ros(self):

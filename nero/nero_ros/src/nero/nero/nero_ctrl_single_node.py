@@ -338,7 +338,7 @@ class NeroRosNode(Node):
                     self.arm_controller.robot.set_speed_percent(50)
                 
                 # 关节运动
-                self.arm_controller.move_j(joints, blocking=False)
+                self.arm_controller.move_js(joints, blocking=False)
 
                 # 夹爪控制 (第 7 个关节之后)
                 if self.girpper_exist and len(joint_data.position) > 7:

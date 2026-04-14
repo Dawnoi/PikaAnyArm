@@ -115,7 +115,7 @@ class Arm_FK:
         """根据关节角度计算末端位姿"""
         joint7_id = self.reduced_robot.model.getJointId('joint7')
         pin.forwardKinematics(self.reduced_robot.model, self.reduced_robot.data, np.concatenate([q], axis=0))
-        
+
         end_pose = create_transformation_matrix(
             self.reduced_robot.data.oMi[joint7_id].translation[0],
             self.reduced_robot.data.oMi[joint7_id].translation[1],

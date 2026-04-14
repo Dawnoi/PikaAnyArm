@@ -102,6 +102,7 @@ class RosOperator(Node):
         joint_state_msg = JointState()
         joint_state_msg.header = Header()
         joint_state_msg.header.stamp = self.get_clock().now().to_msg()
+        joint_state_msg.name = [f'joint{i+1}{self.args.index_name}' for i in range(len(joint_state))]
         joint_state_msg.position = [float(v) for v in joint_state]
         joint_state_msg.velocity = [float(1) for v in joint_state]
         joint_state_msg.effort = [float(1) for v in joint_state]
@@ -150,7 +151,7 @@ class RosOperator(Node):
                 joint_state_msg = JointState()
                 joint_state_msg.header = Header()
                 joint_state_msg.header.stamp = self.get_clock().now().to_msg()
-                joint_state_msg.name = [f'joint1']
+                joint_state_msg.name = [f'joint1{self.args.index_name}']
                 joint_state_msg.position = joint_position
                 self.lift_publisher.publish(joint_state_msg)
                 count += 1
@@ -163,87 +164,83 @@ class RosOperator(Node):
             joint_state_msg = JointState()
             joint_state_msg.header = Header()
             joint_state_msg.header.stamp = self.get_clock().now().to_msg()
-            joint_state_msg.name = [f'joint{i+1}' for i in range(8)]
+            joint_state_msg.name = [f'joint{i+1}{self.args.index_name}' for i in range(7)]
             joint_state_msg.position = joint_position
-            # 夹爪状态
-            if not self.args.use_orient:
-                joint_state_msg.position.append(msg.pose.orientation.w)
-            
-            self.arm_joint_state_ctrl_linear_interpolation(np.array(joint_state_msg.position))
+
+            self.arm_joint_state_ctrl_linear_interpolation(np.array(joint_position))
 
             # 计算 FK 验证
             xyzrpy = self.arm_ik.get_pose(sol_q[:7+(1 if self.args.lift else 0)])
 
-            # 发布末端位姿
+            # FK 输出 xyzrpy[3:6] 是欧拉角，转四元数后发布
+            q_x, q_y, q_z, q_w = quaternion_from_euler(xyzrpy[3], xyzrpy[4], xyzrpy[5])
+
             if not self.args.use_orient:
+                # FK 关节角 + FK 欧拉角转四元数
                 end_pose_msg = PoseStamped()
-                end_pose_msg.header = Header()
                 end_pose_msg.header.stamp = self.get_clock().now().to_msg()
                 end_pose_msg.header.frame_id = "map"
                 end_pose_msg.pose.position.x = xyzrpy[0]
                 end_pose_msg.pose.position.y = xyzrpy[1]
                 end_pose_msg.pose.position.z = xyzrpy[2]
-                end_pose_msg.pose.orientation.x = xyzrpy[3]
-                end_pose_msg.pose.orientation.y = xyzrpy[4]
-                end_pose_msg.pose.orientation.z = xyzrpy[5]
-                end_pose_msg.pose.orientation.w = msg.pose.orientation.w
+                end_pose_msg.pose.orientation.x = q_x
+                end_pose_msg.pose.orientation.y = q_y
+                end_pose_msg.pose.orientation.z = q_z
+                end_pose_msg.pose.orientation.w = q_w
                 self.arm_end_pose_publisher.publish(end_pose_msg)
 
-            # 发布四元数形式的末端位姿
-            x, y, z, w = quaternion_from_euler(xyzrpy[3], xyzrpy[4], xyzrpy[5])
-            end_pose_msg = PoseStamped()
-            end_pose_msg.header = Header()
-            end_pose_msg.header.stamp = self.get_clock().now().to_msg()
-            end_pose_msg.header.frame_id = "map"
-            end_pose_msg.pose.position.x = xyzrpy[0]
-            end_pose_msg.pose.position.y = xyzrpy[1]
-            end_pose_msg.pose.position.z = xyzrpy[2]
-            end_pose_msg.pose.orientation.x = x
-            end_pose_msg.pose.orientation.y = y
-            end_pose_msg.pose.orientation.z = z
-            end_pose_msg.pose.orientation.w = w
-            self.arm_end_pose_orient_publisher.publish(end_pose_msg)
+            # urdf_end_pose_orient: FK 位置 + FK 欧拉角转四元数
+            end_pose_orient_msg = PoseStamped()
+            end_pose_orient_msg.header.stamp = self.get_clock().now().to_msg()
+            end_pose_orient_msg.header.frame_id = "map"
+            end_pose_orient_msg.pose.position.x = xyzrpy[0]
+            end_pose_orient_msg.pose.position.y = xyzrpy[1]
+            end_pose_orient_msg.pose.position.z = xyzrpy[2]
+            end_pose_orient_msg.pose.orientation.x = q_x
+            end_pose_orient_msg.pose.orientation.y = q_y
+            end_pose_orient_msg.pose.orientation.z = q_z
+            end_pose_orient_msg.pose.orientation.w = q_w
+            self.arm_end_pose_orient_publisher.publish(end_pose_orient_msg)
 
+            # receive_end_pose_orient: 目标位置 + 原始目标四元数（无转换）
             if not self.args.use_orient:
-                end_pose_msg.pose.position.x = msg.pose.position.x
-                end_pose_msg.pose.position.y = msg.pose.position.y
-                end_pose_msg.pose.position.z = msg.pose.position.z
-                end_pose_msg.pose.orientation.x = msg.pose.orientation.x
-                end_pose_msg.pose.orientation.y = msg.pose.orientation.y
-                end_pose_msg.pose.orientation.z = msg.pose.orientation.z
-                x, y, z, w = quaternion_from_euler(end_pose_msg.pose.orientation.x, end_pose_msg.pose.orientation.y, end_pose_msg.pose.orientation.z)
-                end_pose_msg.pose.orientation.x = x
-                end_pose_msg.pose.orientation.y = y
-                end_pose_msg.pose.orientation.z = z
-                end_pose_msg.pose.orientation.w = w
-                self.arm_receive_end_pose_publisher.publish(end_pose_msg)
+                receive_pose_msg = PoseStamped()
+                receive_pose_msg.header.stamp = self.get_clock().now().to_msg()
+                receive_pose_msg.header.frame_id = "map"
+                receive_pose_msg.pose.position.x = msg.pose.position.x
+                receive_pose_msg.pose.position.y = msg.pose.position.y
+                receive_pose_msg.pose.position.z = msg.pose.position.z
+                receive_pose_msg.pose.orientation.x = msg.pose.orientation.x
+                receive_pose_msg.pose.orientation.y = msg.pose.orientation.y
+                receive_pose_msg.pose.orientation.z = msg.pose.orientation.z
+                receive_pose_msg.pose.orientation.w = msg.pose.orientation.w
+                self.arm_receive_end_pose_publisher.publish(receive_pose_msg)
             rate.sleep()
 
     def arm_end_pose_callback(self, msg):
         if self.last_ctrl_arm_joint_state is None and self.arm_joint_state is None:
             print("check joint_state topic")
             return
-        
-        if self.args.use_orient:
-            target = pin.SE3(
-                pin.Quaternion(msg.pose.orientation.w, msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z),
-                np.array([msg.pose.position.x, msg.pose.position.y, msg.pose.position.z]),
-            )
-        else:
-            q = quaternion_from_euler(msg.pose.orientation.x, msg.pose.orientation.y, msg.pose.orientation.z)
-            target = pin.SE3(
-                pin.Quaternion(q[3], q[0], q[1], q[2]),
-                np.array([msg.pose.position.x, msg.pose.position.y, msg.pose.position.z]),
-            )
-        sol_q, tau_ff, get_result = self.arm_ik.ik_fun(target.homogeneous, msg.pose.orientation.w)
+
+        # msg.pose.orientation 始终是四元数 (x, y, z, w)
+        target = pin.SE3(
+            pin.Quaternion(msg.pose.orientation.w, msg.pose.orientation.x,
+                           msg.pose.orientation.y, msg.pose.orientation.z),
+            np.array([msg.pose.position.x, msg.pose.position.y, msg.pose.position.z]),
+        )
+        sol_q, tau_ff, get_result = self.arm_ik.ik_fun(
+            target.homogeneous,
+            msg.pose.orientation.w,
+            motorstate=self.arm_joint_state
+        )
         if get_result:
+            # 用 IK 解出的关节角再跑 FK，验证 FK 位置是否接近目标
             xyzrpy = self.arm_ik.get_pose(sol_q[:7+(1 if self.args.lift else 0)])
             diffX = abs(xyzrpy[0] - msg.pose.position.x)
             diffY = abs(xyzrpy[1] - msg.pose.position.y)
             diffZ = abs(xyzrpy[2] - msg.pose.position.z)
-            diffRoll = abs(xyzrpy[3] - msg.pose.orientation.x)
-            diffPitch = abs(xyzrpy[4] - msg.pose.orientation.y)
-            diffYaw = abs(xyzrpy[5] - msg.pose.orientation.z)
+            # xyzrpy[3:6] 是 FK 的欧拉角，同 Euler 轴系下与目标四元数比位置误差
+            # 由于姿态绕奇异点等可能偏差大，此处仅用位置判断
             if diffX > 0.3 or diffY > 0.3 or diffZ > 0.3:
                 get_result = False
         if get_result:
