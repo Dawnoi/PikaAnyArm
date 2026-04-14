@@ -1,0 +1,59 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rclpy: 3.3.21 (/opt/ros/humble/share/rclpy/cmake)
+-- Found std_msgs: 4.9.1 (/opt/ros/humble/share/std_msgs/cmake)
+-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found std_srvs: 4.9.1 (/opt/ros/humble/share/std_srvs/cmake)
+-- Found sensor_msgs: 4.9.1 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Found nav_msgs: 4.9.1 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found nero_description: 1.0.0 (/home/dx/ws_/PikaAnyArm/install/nero_description/share/nero_description/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/dx/ws_/PikaAnyArm/build/pika_remote_nero
+-- Install configuration: "Release"
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//launch
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//launch/teleop_dual_nero.launch.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//launch/teleop_single_nero.launch.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/arm_FIK.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/teleop_nero_publish.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/__init__.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/transformations.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/nero_FK.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero//scripts/nero_IK.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/nero_FK.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/nero_IK.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/teleop_nero_publish.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/transformations.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/lib/pika_remote_nero/arm_FIK.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/ament_index/resource_index/package_run_dependencies/pika_remote_nero
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/ament_index/resource_index/parent_prefix_path/pika_remote_nero
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/ament_prefix_path.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/ament_prefix_path.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/path.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/environment/path.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.bash
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.zsh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/local_setup.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/package.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/ament_index/resource_index/packages/pika_remote_nero
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/cmake/pika_remote_neroConfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/cmake/pika_remote_neroConfig-version.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/pika_remote_nero/share/pika_remote_nero/package.xml

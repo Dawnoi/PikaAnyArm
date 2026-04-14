@@ -1,0 +1,313 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rclpy: 3.3.21 (/opt/ros/humble/share/rclpy/cmake)
+-- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Found PythonExtra: .so  
+-- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/dx/ws_/PikaAnyArm/build/nero_msgs
+[  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[  6%] [34m[1mGenerating Rust code for ROS interfaces[0m
+[  6%] Built target ament_cmake_python_copy_nero_msgs
+running egg_info
+creating nero_msgs.egg-info
+writing nero_msgs.egg-info/PKG-INFO
+writing dependency_links to nero_msgs.egg-info/dependency_links.txt
+writing top-level names to nero_msgs.egg-info/top_level.txt
+writing manifest file 'nero_msgs.egg-info/SOURCES.txt'
+reading manifest file 'nero_msgs.egg-info/SOURCES.txt'
+writing manifest file 'nero_msgs.egg-info/SOURCES.txt'
+[  6%] Built target ament_cmake_python_build_nero_msgs_egg
+[  6%] Built target nero_msgs__rs
+[  8%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_generator_c.dir/rosidl_generator_c/nero_msgs/msg/detail/nero_status_msg__functions.c.o[0m
+[ 10%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_generator_c.dir/rosidl_generator_c/nero_msgs/msg/detail/pos_cmd__functions.c.o[0m
+[ 12%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_generator_c.dir/rosidl_generator_c/nero_msgs/srv/detail/enable__functions.c.o[0m
+[ 12%] Built target nero_msgs__cpp
+[ 14%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[ 16%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[ 18%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[ 20%] [32m[1mLinking C shared library libnero_msgs__rosidl_generator_c.so[0m
+[ 20%] Built target nero_msgs__rosidl_generator_c
+[ 22%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[ 27%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[ 29%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/nero_msgs/srv/enable__type_support.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/nero_msgs/msg/pos_cmd__type_support.cpp.o[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/nero_msgs/msg/nero_status_msg__type_support.cpp.o[0m
+[ 35%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/nero_msgs/msg/detail/pos_cmd__type_support.cpp.o[0m
+[ 39%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/nero_msgs/srv/detail/enable__type_support.cpp.o[0m
+[ 39%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/nero_msgs/msg/detail/nero_status_msg__type_support.cpp.o[0m
+[ 41%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/nero_msgs/msg/detail/dds_fastrtps/pos_cmd__type_support.cpp.o[0m
+[ 43%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/nero_msgs/msg/detail/dds_fastrtps/nero_status_msg__type_support.cpp.o[0m
+[ 45%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/nero_msgs/srv/detail/dds_fastrtps/enable__type_support.cpp.o[0m
+[ 52%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/nero_msgs/srv/enable__type_support.cpp.o[0m
+[ 52%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/nero_msgs/msg/nero_status_msg__type_support.cpp.o[0m
+[ 52%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/nero_msgs/msg/pos_cmd__type_support.cpp.o[0m
+[ 54%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/nero_msgs/msg/detail/nero_status_msg__type_support.c.o[0m
+[ 58%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/nero_msgs/srv/detail/enable__type_support.c.o[0m
+[ 58%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/nero_msgs/msg/detail/pos_cmd__type_support.c.o[0m
+[ 60%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/nero_msgs/msg/detail/nero_status_msg__type_support_c.cpp.o[0m
+[ 62%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/nero_msgs/msg/detail/pos_cmd__type_support_c.cpp.o[0m
+[ 64%] [32mBuilding CXX object CMakeFiles/nero_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/nero_msgs/srv/detail/enable__type_support_c.cpp.o[0m
+[ 66%] [32m[1mLinking CXX shared library libnero_msgs__rosidl_typesupport_c.so[0m
+[ 68%] [32m[1mLinking C shared library libnero_msgs__rosidl_typesupport_introspection_c.so[0m
+[ 68%] Built target nero_msgs__rosidl_typesupport_c
+[ 68%] Built target nero_msgs__rosidl_typesupport_introspection_c
+[ 70%] [32m[1mLinking CXX shared library libnero_msgs__rosidl_typesupport_cpp.so[0m
+[ 70%] Built target nero_msgs__rosidl_typesupport_cpp
+[ 75%] [32m[1mLinking CXX shared library libnero_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[ 75%] [32m[1mLinking CXX shared library libnero_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[ 77%] [32m[1mLinking CXX shared library libnero_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[ 77%] Built target nero_msgs__rosidl_typesupport_introspection_cpp
+[ 77%] Built target nero_msgs__rosidl_typesupport_fastrtps_c
+[ 77%] Built target nero_msgs__rosidl_typesupport_fastrtps_cpp
+[ 77%] Built target nero_msgs
+[ 79%] [34m[1mGenerating Python code for ROS interfaces[0m
+[ 79%] Built target nero_msgs__py
+[ 81%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_generator_py.dir/rosidl_generator_py/nero_msgs/msg/_nero_status_msg_s.c.o[0m
+[ 83%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_generator_py.dir/rosidl_generator_py/nero_msgs/msg/_pos_cmd_s.c.o[0m
+[ 85%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_generator_py.dir/rosidl_generator_py/nero_msgs/srv/_enable_s.c.o[0m
+[ 87%] [32m[1mLinking C shared library rosidl_generator_py/nero_msgs/libnero_msgs__rosidl_generator_py.so[0m
+[ 87%] Built target nero_msgs__rosidl_generator_py
+[ 89%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/nero_msgs/_nero_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[ 93%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/nero_msgs/_nero_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[ 93%] [32mBuilding C object CMakeFiles/nero_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/nero_msgs/_nero_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[ 95%] [32m[1mLinking C shared library rosidl_generator_py/nero_msgs/nero_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[ 97%] [32m[1mLinking C shared library rosidl_generator_py/nero_msgs/nero_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[100%] [32m[1mLinking C shared library rosidl_generator_py/nero_msgs/nero_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[100%] Built target nero_msgs__rosidl_typesupport_introspection_c__pyext
+[100%] Built target nero_msgs__rosidl_typesupport_c__pyext
+[100%] Built target nero_msgs__rosidl_typesupport_fastrtps_c__pyext
+-- Install configuration: ""
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/ament_index/resource_index/rosidl_interfaces/nero_msgs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/pos_cmd.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/nero_status_msg.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/rosidl_generator_c__visibility_control.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__struct.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__functions.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__functions.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__struct.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__functions.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__type_support.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__type_support.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__functions.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/enable.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__functions.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__type_support.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__functions.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__struct.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/environment/library_path.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/environment/library_path.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_generator_c.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_generator_c.so" to ""
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_fastrtps_c.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__type_support.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__type_support.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__rosidl_typesupport_introspection_c.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__type_support.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__rosidl_typesupport_introspection_c.h
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_introspection_c.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_introspection_c.so" to ""
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_c.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_c.so" to ""
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/pos_cmd.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__struct.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__builder.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__type_support.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__type_support.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__struct.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__builder.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__traits.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__traits.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/nero_status_msg.hpp
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/enable.hpp
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__struct.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__type_support.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__traits.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__builder.hpp
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/dds_fastrtps
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/dds_fastrtps
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_fastrtps_cpp.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__type_support.cpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/nero_status_msg__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__type_support.cpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/msg/detail/pos_cmd__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv
+-- Up-to-date: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__type_support.cpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/include/nero_msgs/nero_msgs/srv/detail/enable__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_introspection_cpp.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_cpp.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_typesupport_cpp.so" to ""
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/environment/pythonpath.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/environment/pythonpath.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs-1.0.0-py3.10.egg-info
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs-1.0.0-py3.10.egg-info/top_level.txt
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs-1.0.0-py3.10.egg-info/PKG-INFO
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs-1.0.0-py3.10.egg-info/SOURCES.txt
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs-1.0.0-py3.10.egg-info/dependency_links.txt
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg/_nero_status_msg_s.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg/__init__.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg/_nero_status_msg.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg/_pos_cmd.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg/_pos_cmd_s.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/_nero_msgs_s.ep.rosidl_typesupport_c.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/srv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/srv/__init__.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/srv/_enable_s.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/srv/_enable.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/__init__.py
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/libnero_msgs__rosidl_generator_py.so
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/nero_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/nero_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/_nero_msgs_s.ep.rosidl_typesupport_introspection_c.c
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/nero_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/_nero_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+Listing '/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs'...
+Compiling '/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/__init__.py'...
+Listing '/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg'...
+Compiling '/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg/__init__.py'...
+Compiling '/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg/_nero_status_msg.py'...
+Compiling '/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/msg/_pos_cmd.py'...
+Listing '/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/srv'...
+Compiling '/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/srv/__init__.py'...
+Compiling '/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/srv/_enable.py'...
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/nero_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/nero_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/nero_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/nero_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/nero_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/local/lib/python3.10/dist-packages/nero_msgs/nero_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_generator_py.so
+-- Set runtime path of "/home/dx/ws_/PikaAnyArm/install/nero_msgs/lib/libnero_msgs__rosidl_generator_py.so" to ""
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/ament_index/resource_index/rust_packages/nero_msgs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/build.rs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/src
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/src/msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/src/msg/rmw.rs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/src/srv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/src/srv/rmw.rs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/src/lib.rs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/src/msg.rs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/src/srv.rs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/rust/Cargo.toml
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/msg/NeroStatusMsg.idl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/msg/PosCmd.idl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/srv/Enable.idl
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/msg/NeroStatusMsg.msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/msg/PosCmd.msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/srv/Enable.srv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/srv/Enable_Request.msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/srv/Enable_Response.msg
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/ament_index/resource_index/package_run_dependencies/nero_msgs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/ament_index/resource_index/parent_prefix_path/nero_msgs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/environment/ament_prefix_path.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/environment/ament_prefix_path.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/environment/path.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/environment/path.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/local_setup.bash
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/local_setup.sh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/local_setup.zsh
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/local_setup.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.dsv
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/ament_index/resource_index/packages/nero_msgs
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/export_nero_msgs__rosidl_generator_cExport.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/export_nero_msgs__rosidl_generator_cExport-noconfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/export_nero_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/export_nero_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgs__rosidl_typesupport_introspection_cExport.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgs__rosidl_typesupport_cExport.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgs__rosidl_typesupport_cExport-noconfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/export_nero_msgs__rosidl_generator_cppExport.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/export_nero_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/export_nero_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgs__rosidl_typesupport_introspection_cppExport.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgs__rosidl_typesupport_cppExport.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/export_nero_msgs__rosidl_generator_pyExport.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/export_nero_msgs__rosidl_generator_pyExport-noconfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/rosidl_cmake-extras.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/ament_cmake_export_targets-extras.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgsConfig.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/cmake/nero_msgsConfig-version.cmake
+-- Installing: /home/dx/ws_/PikaAnyArm/install/nero_msgs/share/nero_msgs/package.xml

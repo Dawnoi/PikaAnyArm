@@ -1,0 +1,8 @@
+{
+  "package_name": "nero_msgs",
+  "non_idl_tuples": [
+    "/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero_msgs:msg/NeroStatusMsg.msg",
+    "/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero_msgs:msg/PosCmd.msg",
+    "/home/dx/ws_/PikaAnyArm/nero/nero_ros/src/nero_msgs:srv/Enable.srv"
+  ]
+}

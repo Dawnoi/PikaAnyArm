@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-import rospy
-import rospkg
-from sensor_msgs.msg import JointState
+import rclpy
+from rclpy.node import Node
+from ament_index_python.packages import get_package_share_directory
+
 from geometry_msgs.msg import PoseStamped
-from std_srvs.srv import Trigger, TriggerResponse
-from tf.transformations import quaternion_from_euler, euler_from_quaternion, quaternion_from_matrix
+from std_srvs.srv import Trigger
+from transformations import quaternion_from_euler, euler_from_quaternion, quaternion_from_matrix
 
 import casadi
 import pinocchio as pin
@@ -58,8 +59,7 @@ class Arm_IK:
     def __init__(self):
         np.set_printoptions(precision=5, suppress=True, linewidth=200)
         
-        rospack = rospkg.RosPack()
-        package_path = rospack.get_path('piper_description') 
+        package_path = get_package_share_directory('piper_description')
         urdf_path = os.path.join(package_path, 'urdf', 'piper_description.urdf')
         
         # self.robot = pin.RobotWrapper.BuildFromURDF(urdf_path)
@@ -274,13 +274,19 @@ class Arm_IK:
         return matrix_to_xyzrpy(end_pose)
 
 
-class RosOperator:
+class RosOperator(Node):
     def __init__(self):  
-        rospy.init_node('piper_IK', anonymous=True)  #  /piper_FK/urdf_end_pose  /piper_IK/ctrl_end_pose
-        self.index_name = rospy.get_param('~index_name', default="")
-        self.gripper_position = rospy.get_param('~gripper_xyzrpy', default=[0.245, 0.0, 0.2, 0.0, 0.0, 0.0])
-        self.target_joint_state = rospy.get_param('~target_joint_state', default=[0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
                 
+        super().__init__("test_piper_sim")
+        
+        self.declare_parameter('index_name', "")
+        self.index_name = self.get_parameter('index_name').get_parameter_value().string_value
+        
+        self.declare_parameter('gripper_xyzrpy',[0.245, 0.0, 0.2, 0.0, 0.0, 0.0])
+        self.gripper_position = self.get_parameter('gripper_xyzrpy').get_parameter_value().double_array_value
+        
+        self.declare_parameter('target_joint_state',[0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+        self.target_joint_state = self.get_parameter('target_joint_state').get_parameter_value().double_array_value
         self.arm_ik = Arm_IK()
         self.arm_joint_state_publisher = None
         self.arm_end_pose_publisher = None
@@ -325,8 +331,7 @@ class RosOperator:
         )
         sol_q, tau_ff, get_result = self.arm_ik.ik_fun(target.homogeneous, msg.pose.orientation.w)
         
-    def handle_trigger(self,req):
-        rospy.loginfo("Service /trigger has been called")
+    def handle_trigger(self,req: Trigger.Request, res: Trigger.Response) :
         
         # 在这里执行你想要触发的操作
         self.takeover = not self.takeover
@@ -334,41 +339,41 @@ class RosOperator:
         if self.takeover is True:
             self.base_pose = [self.x, self.y, self.z, self.roll, self.pitch, self.yaw]
             self.flag = True
-            print("开始遥操作")
+            self.get_logger().info("开始遥操作")
         else:
             self.flag = False
             # 检测到复位，机械臂回到初始点位并且记录 右 坐标原点
             self.base_pose = [self.x, self.y, self.z, self.roll, self.pitch, self.yaw]
-            print("机械臂已复位")
+            self.get_logger().info("机械臂已复位")
         
         success = True  # 假设操作总是成功
         
         if success:
-            rospy.loginfo("Triggered successfully")
-            return TriggerResponse(
-                success=True,
-                message="Triggered successfully"
-            )
-        else:
-            rospy.loginfo("Failed to trigger")
-            return TriggerResponse(
-                success=False,
-                message="Failed to trigger"
-            )
-    def init_ros(self):
-        self.arm_joint_state_publisher = rospy.Publisher(f'/joint_states{self.index_name}', JointState, queue_size=10)
-        self.arm_end_pose_publisher = rospy.Publisher(f'/piper_IK{self.index_name}/urdf_end_pose', PoseStamped, queue_size=10)
-        self.arm_end_pose_orient_publisher = rospy.Publisher(f'/piper_IK{self.index_name}/urdf_end_pose_orient', PoseStamped, queue_size=10)
-        self.arm_receive_end_pose_publisher = rospy.Publisher(f'/piper_IK{self.index_name}/receive_end_pose_orient', PoseStamped, queue_size=10)
+            self.get_logger().info("Triggered successfully")
+            
+            res.success = True
+            res.message = "Triggered successfully"
+            
+        else:            
+            self.get_logger().info("Failed to trigger")
+            
+            res.success = False
+            res.message = "Failed to trigger"
         
-        rospy.Subscriber(f'/pika_pose{self.index_name}', PoseStamped, self.arm_end_pose_callback, queue_size=1)
-        rospy.Service(f'/teleop_trigger{self.index_name}',Trigger, self.handle_trigger)        
+        return res
+    def init_ros(self):
+
+        self.create_subscription(PoseStamped, f'/pika_pose{self.index_name}', self.arm_end_pose_callback, 1)
+        
+        self.create_service(Trigger, f'/teleop_trigger{self.index_name}', self.handle_trigger
+                            )
         import time 
         time.sleep(0.5)
 
 def main():
+    rclpy.init()
     ros_operator = RosOperator()
-    rospy.spin()
+    rclpy.spin(ros_operator)
 
 if __name__ == "__main__":
     main()

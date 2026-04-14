@@ -1,0 +1,52 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from nero_msgs/msg/NeroStatusMsg.msg
+// generated code does not contain a copyright notice
+
+
+module nero_msgs {
+  module msg {
+    struct NeroStatusMsg {
+      uint8 ctrl_mode;
+
+      uint8 arm_status;
+
+      uint8 mode_feedback;
+
+      uint8 teach_status;
+
+      uint8 motion_status;
+
+      uint8 trajectory_num;
+
+      int64 err_code;
+
+      boolean joint_1_angle_limit;
+
+      boolean joint_2_angle_limit;
+
+      boolean joint_3_angle_limit;
+
+      boolean joint_4_angle_limit;
+
+      boolean joint_5_angle_limit;
+
+      boolean joint_6_angle_limit;
+
+      boolean joint_7_angle_limit;
+
+      boolean communication_status_joint_1;
+
+      boolean communication_status_joint_2;
+
+      boolean communication_status_joint_3;
+
+      boolean communication_status_joint_4;
+
+      boolean communication_status_joint_5;
+
+      boolean communication_status_joint_6;
+
+      boolean communication_status_joint_7;
+    };
+  };
+};

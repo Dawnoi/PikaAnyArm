@@ -4,15 +4,16 @@ import numpy as np
 from transformations import quaternion_from_euler, euler_from_quaternion, quaternion_from_matrix
 import os
 import sys
-import rospy
+import rclpy
+from rclpy.node import Node
 from geometry_msgs.msg import PoseStamped
 from std_msgs.msg import Header
 import argparse
 from nav_msgs.msg import Odometry
 import threading
-from std_srvs.srv import SetBool, SetBoolRequest, SetBoolResponse
-from std_srvs.srv import Trigger, TriggerRequest, TriggerResponse
+from std_srvs.srv import Trigger
 from data_msgs.msg import TeleopStatus
+import time
 from sensor_msgs.msg import JointState
 
 
@@ -64,8 +65,9 @@ def create_transformation_matrix(x, y, z, roll, pitch, yaw):
     return transformation_matrix
 
 
-class RosOperator:
+class RosOperator(Node):
     def __init__(self, args):
+        super().__init__('teleop_piper_publisher')
         self.args = args
         self.localization_pose_subscriber = None
         self.arm_end_pose_subscriber = None
@@ -102,7 +104,7 @@ class RosOperator:
             pose_msg = PoseStamped()
             pose_msg.header = Header()
             pose_msg.header.frame_id = "map"
-            pose_msg.header.stamp = rospy.Time.now()
+            pose_msg.header.stamp = self.get_clock().now().to_msg()
             pose_msg.pose.position.x = pose_xyzrpy[0]
             pose_msg.pose.position.y = pose_xyzrpy[1]
             pose_msg.pose.position.z = pose_xyzrpy[2]
@@ -110,7 +112,7 @@ class RosOperator:
             pose_msg.pose.orientation.x = pose_xyzrpy[3]  # q[0]
             pose_msg.pose.orientation.y = pose_xyzrpy[4]  # q[1]
             pose_msg.pose.orientation.z = pose_xyzrpy[5]  # q[2]
-            pose_msg.pose.orientation.w = 0  # q[3]
+            pose_msg.pose.orientation.w = 0.0  # q[3]
             self.arm_end_pose_ctrl_publisher.publish(pose_msg)
             status_msg = TeleopStatus()
             status_msg.quit = False
@@ -127,8 +129,7 @@ class RosOperator:
     def status_changing(self):
         self.refresh_localization_pose = True
         self.refresh_arm_end_pose = True
-        rate = rospy.Rate(10)
-        while not rospy.is_shutdown():
+        while rclpy.ok():
             if self.stop_thread:
                 self.status = False
                 self.refresh_localization_pose = False
@@ -144,9 +145,9 @@ class RosOperator:
                 status_msg.fail = True
                 print("wait")
                 self.teleop_status_publisher.publish(status_msg)
-            rate.sleep()
+            time.sleep(0.1)
 
-    def teleop_trigger_callback(self, req):
+    def teleop_trigger_callback(self, request, response):
         if self.status:
             self.status = False
             status_msg = TeleopStatus()
@@ -170,25 +171,24 @@ class RosOperator:
                 self.teleop_status_publisher.publish(status_msg)
                 print("close")
                 self.init_pose()
-        return TriggerResponse()
 
     def init_ros(self):
-        rospy.init_node(f'teleop_piper_publisher{self.args.index_name}', anonymous=True)
-        self.args.index_name = rospy.get_param('~index_name', default="")
-        self.localization_pose_subscriber = rospy.Subscriber(f'/pika_pose{self.args.index_name}', PoseStamped, self.localization_pose_callback, queue_size=1)
-        self.arm_end_pose_subscriber = rospy.Subscriber(f'/piper_FK{self.args.index_name}/urdf_end_pose_orient', PoseStamped, self.arm_end_pose_callback, queue_size=1)
-        self.arm_end_pose_ctrl_publisher = rospy.Publisher(f'/piper_IK{self.args.index_name}/ctrl_end_pose', PoseStamped, queue_size=1)
-        self.teleop_status_publisher = rospy.Publisher(f'/teleop_status{self.args.index_name}', TeleopStatus, queue_size=1)
-        self.status_srv = rospy.Service(f'/teleop_trigger{self.args.index_name}', Trigger, self.teleop_trigger_callback)
+        self.declare_parameter('index_name', "")
+        self.args.index_name = self.get_parameter('index_name').get_parameter_value().string_value
+        self.localization_pose_subscriber = self.create_subscription(PoseStamped, f'/pika_pose{self.args.index_name}', self.localization_pose_callback, 1)
+        self.arm_end_pose_subscriber = self.create_subscription(PoseStamped, f'/piper_FK{self.args.index_name}/urdf_end_pose_orient', self.arm_end_pose_callback, 1)
+        self.arm_end_pose_ctrl_publisher = self.create_publisher(PoseStamped, f'/piper_IK{self.args.index_name}/ctrl_end_pose', 1)
+        self.teleop_status_publisher = self.create_publisher(TeleopStatus, f'/teleop_status{self.args.index_name}', 1)
+        self.status_srv = self.create_service(Trigger, f'/teleop_trigger{self.args.index_name}', self.teleop_trigger_callback)
         
-        self.arm_joint_state_publisher = rospy.Publisher(f'/joint_states{self.args.index_name}', JointState, queue_size=10)
-        self.args.return_zero_position = rospy.get_param('~return_zero_position', default="False")
+        self.arm_joint_state_publisher = self.create_publisher(JointState, f'/joint_states{self.args.index_name}', 1)
+        # 使用机械臂回零模式
+        #self.args.return_zero_position = self.get_parameter('return_zero_position').get_parameter_value().bool_value
         # 订阅joint_states_single话题获取当前关节位置
-        rospy.Subscriber(f'/joint_states_gripper{self.args.index_name}', JointState, self.joint_states_callback, queue_size=1)
+        self.create_subscription(JointState, f'/joint_states_gripper{self.args.index_name}',  self.joint_states_callback, 1)
         import time 
         time.sleep(0.5)
         self.init_pose()
-        
     def joint_states_callback(self, msg):
         """
         处理从joint_states_single话题接收到的关节状态数据
@@ -223,11 +223,11 @@ class RosOperator:
                 # 计算每一步的增量
                 increments = [(target - current) / steps for current, target in zip(current_positions, target_joint_state)]
                 
-                # 创建ROS的Rate对象控制循环频率
-                rate_obj = rospy.Rate(rate)
+                # 创建ROS2的Rate对象控制循环频率
+                rate_obj = self.create_rate(rate)
                 
                 # 记录开始时间（用于日志）
-                start_time = rospy.Time.now()
+                start_time = self.get_clock().now()
                 
                 # 逐步移动到目标位置
                 for step in range(steps + 1):
@@ -237,8 +237,9 @@ class RosOperator:
                     # 发布关节状态消息
                     joint_states_msgs = JointState()
                     joint_states_msgs.header = Header()
-                    joint_states_msgs.header.stamp = rospy.Time.now()
-                    joint_states_msgs.name = [f'joint{i+1}' for i in range(7)]
+                    joint_states_msgs = JointState()
+                    joint_states_msgs.header = Header()
+                    joint_states_msgs.header.stamp = self.get_clock().now()
                     joint_states_msgs.position = interpolated_positions
                     
                     # 发布消息
@@ -250,21 +251,24 @@ class RosOperator:
                 # 确保最后一帧是精确的目标位置
                 joint_states_msgs = JointState()
                 joint_states_msgs.header = Header()
-                joint_states_msgs.header.stamp = rospy.Time.now()
+                # 确保最后一帧是精确的目标位置
+                joint_states_msgs = JointState()
+                joint_states_msgs.header = Header()
+                joint_states_msgs.header.stamp = self.get_clock().now()
                 joint_states_msgs.name = [f'joint{i+1}' for i in range(7)]
                 joint_states_msgs.position = target_joint_state
                 self.arm_joint_state_publisher.publish(joint_states_msgs)
                 
                 # 计算实际用时
-                elapsed_time = (rospy.Time.now() - start_time).to_sec()
+                elapsed_time = (self.get_clock().now() - start_time).to_sec()
                 # print(f"平滑移动到初始位置完成，用时: {elapsed_time:.2f}秒")
                 
             else:
-                start_time = rospy.Time.now()  # 获取当前时间
-                while (rospy.Time.now() - start_time).to_sec() < 0.5:  # 持续发送0.5秒
+                start_time = self.get_clock().now()  # 获取当前时间
+                while (self.get_clock().now() - start_time).to_sec() < 0.5:  # 持续发送0.5秒
                     joint_states_msgs = JointState()
                     joint_states_msgs.header = Header()
-                    joint_states_msgs.header.stamp = rospy.Time.now()
+                    joint_states_msgs.header.stamp = self.get_clock().now()
                     joint_states_msgs.name = [f'joint{i+1}' for i in range(7)]
                     joint_states_msgs.position = target_joint_state
                     self.arm_joint_state_publisher.publish(joint_states_msgs)
@@ -284,10 +288,10 @@ def get_arguments():
 
 def main():
     args = get_arguments()
+    rclpy.init()
     ros_operator = RosOperator(args)
-    rospy.spin()
+    rclpy.spin(ros_operator)
 
 
 if __name__ == "__main__":
     main()
-    

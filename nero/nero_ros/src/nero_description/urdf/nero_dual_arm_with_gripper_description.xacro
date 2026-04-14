@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="nero_dual_arm_with_gripper">
+  <!-- 复用现有双臂 + 新增夹爪宏 -->
+  <xacro:include filename="nero_arm_macro.xacro"/>
+  <xacro:include filename="nero_gripper_macro.xacro"/>
+
+  <link name="world"/>
+  <link name="body"/>
+  <joint name="world_to_body" type="fixed">
+    <parent link="world"/>
+    <child link="body"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <xacro:nero_arm
+    prefix="left_"
+    parent_link="body"
+    joint1_lower="-2.70526"
+    joint1_upper="0.1745329252"
+    joint2_lower="-0.0001"
+    joint2_upper="1.74"
+    joint3_lower="-2.75"
+    joint3_upper="2.75"
+    joint4_lower="0.001"
+    joint4_upper="2.14"
+    joint5_lower="-2.75"
+    joint5_upper="2.75"
+  >
+    <origin xyz="0 0.20 0" rpy="0 -1.5707926 -1.5707926"/>
+  </xacro:nero_arm>
+
+  <xacro:nero_arm
+    prefix="right_"
+    parent_link="body"
+    joint1_lower="-1.0471975512"
+    joint1_upper="2.70526"
+    joint2_lower="-0.0001"
+    joint2_upper="1.74"
+    joint3_lower="-2.75"
+    joint3_upper="2.75"
+    joint4_lower="0.001"
+    joint4_upper="2.14"
+    joint5_lower="-2.75"
+    joint5_upper="2.75"
+  >
+    <origin xyz="0 -0.20 0" rpy="0 -1.5707926 1.5707926"/>
+  </xacro:nero_arm>
+
+  <!-- 左右夹爪挂载到各自 link7 -->
+  <xacro:nero_gripper prefix="left_" parent_link="left_link7">
+    <origin xyz="0.032 0 -0.0235" rpy="-1.5708 0 -1.5708"/>
+  </xacro:nero_gripper>
+
+  <xacro:nero_gripper prefix="right_" parent_link="right_link7">
+    <origin xyz="0.032 0 -0.0235" rpy="-1.5708 0 -1.5708"/>
+  </xacro:nero_gripper>
+</robot>

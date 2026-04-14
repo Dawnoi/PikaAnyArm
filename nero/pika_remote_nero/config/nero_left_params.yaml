@@ -1,0 +1,10 @@
+# 左臂参数配置文件
+# 夹爪相对于机器人 link7 的偏移量
+# 格式: [x, y, z, roll, pitch, yaw]
+# 单位: 米和弧度
+gripper_xyzrpy: [0.032, 0.0, -0.0235, -1.5708, 0.0, -1.5708]
+
+# 目标关节状态
+# 格式: [joint1, joint2, joint3, joint4, joint5, joint6, joint7]
+# 单位: 弧度
+target_joint_state: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]

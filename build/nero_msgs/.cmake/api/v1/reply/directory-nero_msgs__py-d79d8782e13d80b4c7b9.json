@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "nero_msgs__py",
+		"source" : "/home/dx/ws_/PikaAnyArm/build/nero_msgs/nero_msgs__py"
+	}
+}
