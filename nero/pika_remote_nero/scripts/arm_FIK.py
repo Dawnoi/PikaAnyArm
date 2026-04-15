@@ -251,7 +251,7 @@ class Arm_IK:
             if self.init_data is not None:
                 max_diff = max(abs(self.history_data - sol_q))
                 self.init_data = sol_q
-                if max_diff > 30.0/180.0*3.1415:
+                if max_diff > 60.0/180.0*3.1415:
                     self.init_data = np.zeros(self.reduced_robot.model.nq)
             else:
                 self.init_data = sol_q

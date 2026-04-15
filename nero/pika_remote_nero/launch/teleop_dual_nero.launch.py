@@ -1,12 +1,13 @@
 import os
+import launch
+import launch.actions
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
-
-
+from launch.conditions import IfCondition
 def generate_launch_description():
     share_dir = get_package_share_directory('pika_remote_nero')
 
@@ -16,18 +17,31 @@ def generate_launch_description():
             default_value=os.path.join(share_dir, 'config', 'nero_params.yaml'),
             description='Path to parameters file'
         ),
+        DeclareLaunchArgument(
+            'use_rviz',
+            default_value='false',
+            description='Whether to launch RViz (default: false)'
+        ),
+        DeclareLaunchArgument(
+            'enable_gripper',
+            default_value='true',
+            description='Whether to enable gripper control (default: true)'
+        ),
     ]
     parameter_file = LaunchConfiguration('paramsFile')
+    use_rviz = LaunchConfiguration('use_rviz')
+    enable_gripper = LaunchConfiguration('enable_gripper')
 
-    # 启动 RViz 和 robot_state_publisher
+    # 启动 RViz 和 robot_state_publisher（可选）
     display_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(get_package_share_directory('nero_description'), 'launch', 'display_xacro.launch.py')
-        ])
+        ]),
+        condition=IfCondition(use_rviz)
     )
 
     return LaunchDescription(declared_arguments + [
-        # 启动 RViz 和 robot_state_publisher
+        # 启动 RViz 和 robot_state_publisher（默认关闭）
         display_launch,
 
         # 左臂硬件控制节点
@@ -88,10 +102,14 @@ def generate_launch_description():
             name='teleop_nero_l',
             parameters=[{
                 'index_name': '_l',
-                'return_zero_position': 'False'
+                'return_zero_position': 'False',
+                'gripper_control': enable_gripper,
+                'can_channel': 'can_left',
             }],
             remappings=[
                 ('/joint_states', '/joint_states_l'),
+                # 夹爪命令发布到 nero_ctrl_single_node_l 订阅的话题
+                ('joint_ctrl_single', '/joint_states_l'),
             ],
             respawn=True,
             output='screen'
@@ -155,10 +173,14 @@ def generate_launch_description():
             name='teleop_nero_r',
             parameters=[{
                 'index_name': '_r',
-                'return_zero_position': 'False'
+                'return_zero_position': 'False',
+                'gripper_control': enable_gripper,
+                'can_channel': 'can_right',
             }],
             remappings=[
                 ('/joint_states', '/joint_states_r'),
+                # 夹爪命令发布到 nero_ctrl_single_node_r 订阅的话题
+                ('joint_ctrl_single', '/joint_states_r'),
             ],
             respawn=True,
             output='screen'

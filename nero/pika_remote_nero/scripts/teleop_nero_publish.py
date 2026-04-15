@@ -2,6 +2,8 @@
 """
 Nero Teleoperation Publish Node
 订阅主设备位姿，发布到 IK 控制器进行遥操作
+支持夹爪控制：订阅遥操夹爪角度话题，发布夹爪命令到 joint_ctrl_single
+注意：实际的夹爪控制由 nero_ctrl_single_node 执行，避免创建重复连接
 """
 
 import math
@@ -17,10 +19,9 @@ import argparse
 from nav_msgs.msg import Odometry
 import threading
 from std_srvs.srv import Trigger
-from data_msgs.msg import TeleopStatus
+from data_msgs.msg import TeleopStatus, Gripper
 import time
 from sensor_msgs.msg import JointState
-
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
@@ -90,7 +91,22 @@ class RosOperator(Node):
         self.current_joint_positions = [0.0] * 7  # Nero 有 7 个关节
         self.joint_positions_received = False
         
+        # 夹爪控制相关
+        self.left_gripper_initial = None  # 左夹爪初始角度
+        self.right_gripper_initial = None  # 右夹爪初始角度
+        self.gripper_l_subscriber = None
+        self.gripper_r_subscriber = None
+        self.gripper_cmd_publisher = None  # 夹爪命令发布者
+        
+        # AGX_GRIPPER 夹爪控制参数
+        # 遥操夹爪角度范围: 0 ~ 1.67 rad（完全张开到完全闭合，对应 enable=true）
+        # AGX_GRIPPER 夹爪宽度范围: 0.0 ~ 0.1 m（完全闭合到完全张开）
+        # 映射关系: 遥操角度越小，AGX_GRIPPER 宽度越大（夹爪张开）
+        self.GRIPPER_ANGLE_MAX = 1.67  # 遥操夹爪最大角度 (rad)
+        self.GRIPPER_WIDTH_MAX = 0.1   # AGX_GRIPPER 最大宽度 (m)
+        
         self.init_ros()
+        self.init_gripper()
 
     def localization_pose_callback(self, msg):
             # 提取当前位置（base_link 系）
@@ -119,21 +135,25 @@ class RosOperator(Node):
                 raw_dyaw = yaw - self.pika_pose_initial[5]
                 
                 # 2. 根据左右臂区分坐标系映射 (Coordinate Mapping)
+                # 注意：由于两个遥操设备 TF 相同，旋转映射左右臂一致
                 if self.args.index_name == '_r':
-                    # 【右臂逻辑】: 交换了 x 和 y 的映射。
-                    # 注意：你需要根据真机实际测试，调整这里的正负号
-                    mapped_dx = -raw_dy  # 如果往右飘，改成 raw_dy
-                    mapped_dy = raw_dx   # 如果往前飘，改成 -raw_dx
+                    # 【右臂逻辑】: 基座位置镜像 (y 取反)
+                    # 位置映射：dx=-dy, dy=dx
+                    mapped_dx = -raw_dy
+                    mapped_dy = raw_dx
                     mapped_dz = raw_dz
+                    # 旋转映射：与左臂相同（TF 相同）
                     mapped_droll = -raw_droll
                     mapped_dpitch = -raw_dpitch
                     mapped_dyaw = raw_dyaw
                     
                 elif self.args.index_name == '_l':
-                    # 【左臂逻辑】: X坐标镜像，Y/Pitch保持不变
+                    # 【左臂逻辑】: 基座位置镜像 (x 取反)
+                    # 位置映射：dx=dy, dy=-dx
                     mapped_dx = raw_dy
                     mapped_dy = -raw_dx
                     mapped_dz = raw_dz
+                    # 旋转映射：与右臂相同（TF 相同）
                     mapped_droll = -raw_droll
                     mapped_dpitch = -raw_dpitch
                     mapped_dyaw = raw_dyaw
@@ -156,11 +176,6 @@ class RosOperator(Node):
                     self.arm_pose_initial[4] + mapped_dpitch,
                     self.arm_pose_initial[5] + mapped_dyaw
                 ]
-                if self.args.index_name == '_l':
-                    self.get_logger().info(
-                        f"主设备旋转增量(度): Roll={math.degrees(raw_droll):.1f}, "
-                        f"Pitch={math.degrees(raw_dpitch):.1f}, Yaw={math.degrees(raw_dyaw):.1f}"
-                    )
                 # 组装并发布 PoseStamped
                 pose_msg = PoseStamped()
                 pose_msg.header = Header()
@@ -243,8 +258,11 @@ class RosOperator(Node):
 
     def init_ros(self):
         self.declare_parameter('index_name', "")
+        self.declare_parameter('return_zero_position', "False")
+        self.declare_parameter('gripper_control', True)
+        self.declare_parameter('can_channel', "can0")
+        self.args.return_zero_position = self.get_parameter('return_zero_position').get_parameter_value().string_value
         self.args.index_name = self.get_parameter('index_name').get_parameter_value().string_value
-        
         # 订阅主设备位姿
         self.localization_pose_subscriber = self.create_subscription(
             PoseStamped, 
@@ -289,13 +307,18 @@ class RosOperator(Node):
             1
         )
         
-        # 订阅关节状态（来自 relay 节点的转换后的关节状态）
+        # 订阅关节状态（来自 nero_ctrl_single_node 的真实关节角度）
+        # /puppet/joint_{nero_name} 发布真实关节角度（来自 get_joint_angles）
+        # /master/joint_{nero_name} 发布控制指令回显（遥操作时全零）
+        nero_name = "left" if self.args.index_name == "_l" else "right"
+        joint_topic = f'/puppet/joint_{nero_name}'
         self.create_subscription(
             JointState,
-            f'/joint_states_gripper{self.args.index_name}',
+            joint_topic,
             self.joint_states_callback,
             1
         )
+        self.get_logger().info(f"[DEBUG] Subscribed to joint topic: {joint_topic}")
         
         time.sleep(0.5)
         self.init_pose()
@@ -305,7 +328,105 @@ class RosOperator(Node):
         if len(msg.position) >= 7:
             self.current_joint_positions = list(msg.position[:7])
             self.joint_positions_received = True
+            self.get_logger().info(f"joint_states: {[f'{p:.3f}' for p in msg.position[:7]]}")
 
+    def init_gripper(self):
+        """初始化夹爪控制
+        
+        通过发布夹爪命令到 joint_ctrl_single 话题，让 nero_ctrl_single_node 执行控制
+        注意：不创建新的机械臂连接，避免与 nero_ctrl_single_node 冲突
+        """
+        # 获取 gripper_control 参数
+        gripper_control = self.get_parameter('gripper_control').get_parameter_value().bool_value
+        if not gripper_control:
+            self.get_logger().info("Gripper control is disabled")
+            return
+        
+        # 创建夹爪命令发布者，发布到 joint_ctrl_single 话题
+        # nero_ctrl_single_node 会接收并控制夹爪
+        self.gripper_cmd_publisher = self.create_publisher(
+            JointState,
+            f'joint_ctrl_single',
+            1
+        )
+        
+        # 订阅遥操夹爪角度话题
+        if self.args.index_name == '_l':
+            self.gripper_l_subscriber = self.create_subscription(
+                Gripper,
+                '/gripper_l/data',
+                self.gripper_l_callback,
+                1
+            )
+        elif self.args.index_name == '_r':
+            self.gripper_r_subscriber = self.create_subscription(
+                Gripper,
+                '/gripper_r/data',
+                self.gripper_r_callback,
+                1
+            )
+        
+        # 设置默认夹爪状态（张开）
+        # self._set_gripper_open()
+        
+        self.get_logger().info(f"Gripper control initialized for {self.args.index_name}")
+
+    def gripper_l_callback(self, msg):
+        """左夹爪角度回调
+        
+        话题消息格式（data_msgs/Gripper）:
+        - angle: 夹爪角度 (rad), 范围 0~1.67
+        - enable: 是否使能（true 表示有有效数据）
+        
+        映射逻辑:
+        - 遥操夹爪 angle=0 表示完全张开 -> AGX_GRIPPER width=0.1m
+        - 遥操夹爪 angle=1.67 表示完全闭合 -> AGX_GRIPPER width=0.0m
+        """
+        # TODO: 暂不发布夹爪命令，先观察关节位置数据
+        # self.get_logger().info(f"[DEBUG] Gripper L callback: angle={msg.angle:.3f}, enable={msg.enable}")
+        return
+    
+    def gripper_r_callback(self, msg):
+        """右夹爪角度回调
+        
+        话题消息格式（data_msgs/Gripper）:
+        - angle: 夹爪角度 (rad), 范围 0~1.67
+        - enable: 是否使能（true 表示有有效数据）
+        
+        映射逻辑同上
+        """
+        # TODO: 暂不发布夹爪命令，先观察关节位置数据
+        # self.get_logger().info(f"[DEBUG] Gripper R callback: angle={msg.angle:.3f}, enable={msg.enable}")
+        return
+    
+    def _publish_gripper_cmd(self, gripper_width):
+        """发布夹爪命令到 joint_ctrl_single 话题
+        
+        Args:
+            gripper_width: 夹爪宽度 (m), 范围 0.0 ~ 0.1
+        """
+        cmd_msg = JointState()
+        cmd_msg.header.stamp = self.get_clock().now().to_msg()
+        cmd_msg.name = ['joint1', 'joint2', 'joint3', 'joint4', 'joint5', 'joint6', 'joint7', 'gripper']
+
+        cmd_msg.position = [-0.000925,1.665288,1.5,0.001798,0.000122,0.000000,0.000140] * 7 + [float(gripper_width)]
+        cmd_msg.velocity = [0.0] * 8
+        cmd_msg.effort = [0.0] * 8
+        
+        try:
+            self.gripper_cmd_publisher.publish(cmd_msg)
+        except Exception:
+            pass  # 忽略发布错误
+    
+    def _set_gripper_open(self):
+        """设置夹爪为张开状态
+        
+        默认将夹爪张开到最大宽度
+        """
+        if self.gripper_cmd_publisher is not None:
+            self._publish_gripper_cmd(self.GRIPPER_WIDTH_MAX)
+            self.get_logger().info("Gripper set to open position")
+    
     def init_pose(self):
         if self.args.return_zero_position == "True":
             # 目标关节位置
@@ -319,7 +440,7 @@ class RosOperator(Node):
                 
                 # 设置过渡时间和控制频率
                 duration = 0.5  # 过渡持续时间(秒)
-                rate = 30  # 控制频率(Hz)
+                rate = 50  # 控制频率(Hz)
                 
                 # 计算总步数
                 steps = int(duration * rate)
@@ -381,6 +502,10 @@ def get_arguments():
                         default="", required=False)
     parser.add_argument('--return_zero_position', action='store', type=str, help='return_zero_position',
                         default="False", required=False)
+    parser.add_argument('--gripper_control', action='store', type=str, help='enable gripper control',
+                        default="True", required=False)
+    parser.add_argument('--can_channel', action='store', type=str, help='CAN channel for gripper control',
+                        default="can0", required=False)
     args, unknown = parser.parse_known_args()
     return args
 

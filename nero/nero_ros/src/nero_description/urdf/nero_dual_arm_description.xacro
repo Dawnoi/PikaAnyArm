@@ -52,6 +52,8 @@
       left_joint4 只允许非负、right_joint4 符号与装配一致（保留小 eps 避免贴 0）。
     - joint3 左右臂均为对称全范围 [-2.75, 2.75] rad。
   -->
+
+  <!-- J1 upper限制到2.0；J5lower同样编导 -->
   <xacro:nero_arm
     prefix="left_"
     parent_link="body"
